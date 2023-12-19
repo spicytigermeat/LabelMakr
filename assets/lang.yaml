@@ -1,0 +1,93 @@
+# Strings for each lang in SOFA Gui for easier localization!
+# Please base all translations off of English Translation as that is the original!
+# for new languages, please use codes, example: en_US, zh_ZH, jp_JP
+en_US:
+  lang_code: 'English (US)'
+  app_ttl: 'SVS Label Generation Tool'
+  tab_ttl_1: 'Transcriptions'
+  tab_ttl_2: 'Alignments'
+  tab_ttl_3: 'Settings'
+  copyright: '© tigermeat 2023'
+
+  #transcription window strings:
+  corpus_folder: 'Corpus Folder:'
+  open: 'Open'
+  lang_choice: 'Transcription Language'
+  run_trns: 'Run Transcription'
+
+  # aligner window strings:
+  model_lbl: 'Choose SOFA Model:'
+  op_lbl: 'Choose output format:'
+  run_align: 'Run SOFA'
+
+  # settings:
+  disp_lang: 'Display Language'
+  wh_model: 'Whisper Model'
+jp_JP:
+  lang_code: '日本語'
+  app_ttl: 'SVSベースラベル作成ツール'
+  tab_ttl_1: '転写'
+  tab_ttl_2: '整置'
+  tab_ttl_3: '設定'
+  copyright: '© tigermeat 2023'
+
+  #transcription window strings:
+  corpus_folder: 'コルパスフォルダー:'
+  open: '開く'
+  lang_choice: '転写の言語'
+  run_trns: '転写を実行'
+
+  # aligner window strings:
+  model_lbl: 'SOFAモデルを選ぶ:'
+  op_lbl: '転写のフォマット:'
+  run_align: 'SOFAを実行'
+
+  # settings:
+  disp_lang: '表示言語'
+  wh_model: 'Whisperモデル'
+zh_ZH:
+  # translation by ArchiVoice
+  lang_code: '中文 (繁體)'
+  app_ttl: 'SVS 標註生成工具'
+  tab_ttl_1: '標註'
+  tab_ttl_2: '轉錄'
+  tab_ttl_3: '設定'
+  copyright: '© tigermeat 2023'
+
+  #transcription window strings:
+  corpus_folder: '資料庫位置:'
+  open: '開啟'
+  lang_choice: '轉錄語言'
+  run_trns: '執行轉錄'
+
+  # aligner window strings:
+  model_lbl: '選擇 SOFA 模型:'
+  op_lbl: '選擇輸出格式:'
+  run_align: '執行 SOFA'
+
+  # settings:
+  disp_lang: '顯示語言'
+  wh_model: 'Whisper模型'
+id_ID:
+  # translation by Koji
+  lang_code: 'Bahasa indonesia'
+  app_ttl: 'Alat pembuat label SVS'
+  tab_ttl_1: 'Transkripsi'
+  tab_ttl_2: 'Penyelarasan'
+  tab_ttl_3: 'Setelan'
+  copyright: '© tigermeat 2023'
+
+  #transcription window strings:
+  corpus_folder: 'Folder Korpus:'
+  open: 'Buka'
+  lang_choice: 'Bahasa Transkripsi'
+  run_trns: 'Jalankan Transkripsi'
+
+  # aligner window strings:
+  model_lbl: 'Pilih Model SOFA:'
+  op_lbl: 'Pilih Format Keluaran:'
+  run_align: 'Jalankan SOFA'
+
+  # settings:
+  disp_lang: 'Bahasa Tampilan'
+  wh_model: 'Model Whisper'
