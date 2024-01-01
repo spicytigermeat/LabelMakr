@@ -1,0 +1,4 @@
+openvpi-whisper
+customtkinter
+ftfy
+pykakasi
