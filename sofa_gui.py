@@ -41,10 +41,7 @@ class Transcriber:
 
 	def run_transcription(self, audio):
 		answer = self.model.transcribe(audio, suppress_tokens=[-1] + self.number_tokens)
-		if lang == "JP":
-			trns_str = fxy(self.conv_kana2roma(answer['text']))
-		else:
-			trns_str = fxy(answer['text'])
+		trns_str = fxy(answer['text'])
 		print(f"Wrote transcription for {audio} in corpus.")
 		return trns_str
 
