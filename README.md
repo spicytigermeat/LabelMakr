@@ -5,6 +5,12 @@ GUI Tool for Whisper Transcription and SOFA Alignment
 
 Please use the portable version for Windows found [here](https://github.com/spicytigermeat/SOFA_GUI/releases/tag/v0.0.1)
 
+# Plans
+
+- Implement automatic label cleanup (using labbu library)
+- Implement support for Japanese model by colstone
+- Clean up code and fix up localization method (i don't like i18n)
+
 # Manual installation
 
 If you'd like to install this manually, follow these steps!
