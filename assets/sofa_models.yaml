@@ -1,9 +1,9 @@
 models:
   tgm_sofa:
     name: 'tgm_sofa'
-    ver: 'v0.0.1'
+    ver: 'v0.0.4'
     language: 'English'
-    ckpt_path: 'SOFA/ckpt/tgm_sofa.ckpt'
+    ckpt_path: 'SOFA/ckpt/tgm_sofa_v004.ckpt'
     dict_path: 'SOFA/dictionary/tgm_sofa_dict.txt'
   #colstone_jpn:
   #  name: 'colstone_jpn'
