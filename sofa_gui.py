@@ -39,7 +39,7 @@ class Transcriber:
 		#jpconv = kks.getConverter()
 		return 0
 
-	def run_transcription(self, audio, lang):
+	def run_transcription(self, audio):
 		answer = self.model.transcribe(audio, suppress_tokens=[-1] + self.number_tokens)
 		if lang == "JP":
 			trns_str = fxy(self.conv_kana2roma(answer['text']))
