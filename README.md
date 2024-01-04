@@ -1,17 +1,30 @@
-# SOFA_GUI
+# SVS Label Generation Tool 🛋️
 GUI Tool for Whisper Transcription and SOFA Alignment
 
-![image](https://github.com/spicytigermeat/SOFA_GUI/assets/103609620/710821bc-f612-4423-b7a8-bd13c70a02e7)
+![image](https://github.com/spicytigermeat/SOFA_GUI/assets/103609620/bd9dcbca-facf-469f-9a09-08fb444c1afb)
 
-Please use the portable version for Windows found [here](https://github.com/spicytigermeat/SOFA_GUI/releases/tag/v0.0.1)
+Please use the portable version for Windows found [here](https://github.com/spicytigermeat/SOFA_GUI/releases/tag/v003)
 
-# Plans
+# Credits 📰
+
+- SOFA developed by [qiuqiao](https://github.com/qiuqiao/SOFA)
+- [tgm_sofa](https://github.com/spicytigermeat/SOFA-Models/releases/tag/v0.0.4) is developed by me, tigermeat (used ver: v004)
+- Japanese SOFA model trained by [colstone](https://github.com/colstone/SOFA_Models/releases/tag/JPN-V0.0.2b). The installed version is trimmed to save space. (used ver: v0.0.2)
+- Japanese G2p Compiled Version by [CjangCjengh](https://github.com/CjangCjengh/japanese_g2p)
+
+## GUI Translations 🗣️
+- English/Japanese: tigermeat
+- Traditional Chinese: ArchiVoice
+- Indonesian: Koji
+
+# Plans 📝
 
 - Implement automatic label cleanup (using labbu library)
-- Implement support for Japanese model by colstone
 - Clean up code and fix up localization method (i don't like i18n)
+- ~Implement support for Japanese model by colstone~ Implemented in v003
 
-# Manual installation
+
+# Manual installation 🧰
 
 If you'd like to install this manually, follow these steps!
 Requirements:
