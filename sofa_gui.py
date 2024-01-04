@@ -1,5 +1,6 @@
 # general stuff
 import os, sys, re, glob
+sys.path.append('.')
 # GUI stuff
 import customtkinter as ctk
 import tkinter as tk
@@ -9,166 +10,23 @@ import threading
 import yaml
 import pathlib
 import warnings
-#import pykakasi # japanese language processing
+
+import sofa_func # basically just a script with sofa inference
+import whisper_func # transcriber class is here
 
 warnings.filterwarnings("ignore")
-sys.path.append('.')
 
 # default stuff configurations :)
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme('assets/ctk_tgm_theme.json')
 ctk.deactivate_automatic_dpi_awareness()
 
-class Transcriber:
-	def __init__(self, lang, wh_model):
-		super().__init__()
-		import whisper
-		from whisper.tokenizer import get_tokenizer
-
-		# referenced code from MLo7's MFA Notebook :)
-		self.model = whisper.load_model(wh_model)
-		whisper.DecodingOptions(language=lang.lower())
-		self.tokenizer = get_tokenizer(multilingual=True)
-		self.number_tokens = [i for i in range(self.tokenizer.eot) if all(c in "0123456789" for c in self.tokenizer.decode([i]))]
-
-	def conv_kana2roma(self, string):
-		# i have no idea how i want to implement this yet lol
-		#kks = pykakasi.kakasi():
-		#kks.setMode("J", "H")
-		#kks.setMode("K", "H")
-		#jpconv = kks.getConverter()
-		return 0
-
-	def run_transcription(self, audio):
-		answer = self.model.transcribe(audio, suppress_tokens=[-1] + self.number_tokens)
-		trns_str = fxy(answer['text'])
-		print(f"Wrote transcription for {audio} in corpus.")
-		return trns_str
-
 class App(ctk.CTk):
 	def __init__(self):
 		super().__init__()
-
-		def cmbo_callback(choice):
-			print('selected option:', choice)
-
-		def whisper_function(self):
-			self.prog_bar.start()
-			trnsr = Transcriber(self.trans_lang_choice.get(), self.inf_wh_model.get())
-			try:
-				for file in glob.glob('corpus/**/*.wav', recursive=True):
-					answer = ''
-					out_name = file[:-4] + '.lab'
-					trns_str = trnsr.run_transcription(file)
-					output = fxy(trns_str.lower())
-					final_op = re.sub(r"[.,!?]", "", output)
-					with open(out_name, 'w+', encoding='utf-8') as whis:
-						whis.write(final_op)
-						whis.close()
-				self.prog_bar.stop()
-				self.prog_bar.set(0)
-			except RuntimeError as e:
-				print(f"Error Transcribing: {e}")
-				self.prog_bar.stop()
-				self.prog_bar.set(0)
-
-		def run_transcriber(self):
-			# initialize the whisper transcriber class
-			print("Initializing Whisper")
-			# get a list of each file path needing transcription
-			file_list = []
-			x = threading.Thread(target=whisper_function, args=(self,))
-			x.start()
-
-		def infer_sofa(self, ckpt, dictionary, op_format):
-			self.prog_bar.set(0)
-			self.prog_bar.start()
-
-			print('Running SOFA')
-			sys.path.append('./SOFA')
-			from SOFA.infer import save_htk, save_textgrids, post_processing, fill_small_gaps, add_SP
-			from SOFA.modules import AP_detector, g2p
-			from SOFA.train import LitForcedAlignmentTask
-			import click
-			import lightning as pl
-			import textgrid
-			import torch
-
-			# set up the G2P, which currently is just a dictionary
-			g2p_class = getattr(g2p, "DictionaryG2P")
-			grapheme_to_phoneme = g2p_class(dictionary=dictionary)
-
-			# set up the AP Detector
-			AP_detector_class = getattr(AP_detector, 'LoudnessSpectralcentroidAPDetector')
-			get_AP = AP_detector_class()
-
-			# load up the dataset
-			dataset = grapheme_to_phoneme.get_dataset(pathlib.Path('corpus').rglob('*.wav'))
-
-			# load model
-			torch.set_grad_enabled(False)
-			model = LitForcedAlignmentTask.load_from_checkpoint(ckpt)
-			model.set_inference_mode('force')
-			trainer = pl.Trainer(logger=False)
-
-			# run predictions
-			predictions = trainer.predict(model, dataloaders=dataset, return_predictions=True)
-			predictions = get_AP.process(predictions)
-			predictions = post_processing(predictions)
-
-			# output
-			if op_format == 'TextGrid':
-				save_textgrids(predictions)
-			elif op_format == 'htk':
-				save_htk(predictions)
-
-			self.prog_bar.stop()
-
-		def run_sofa(self, ckpt, dictionary, op_format):
-			x = threading.Thread(target=infer_sofa(self, ckpt, dictionary, op_format,))
-			x.start()
-
-		def startfile(self, filename):
-			try:
-				os.startfile(filename)
-			except:
-				subprocess.Popen(['xdg-open', filename])
-
-		def change_disp_lang(self, choice):
-			self.clang.set(choice)
-			old_name_1 = self.tab_ttl_1
-			old_name_2 = self.tab_ttl_2
-			old_name_3 = self.tab_ttl_3
-			self.cfg['disp_lang'] = choice
-			with open('assets/cfg.yaml', 'w', encoding='utf-8') as f:
-				yaml.dump(self.cfg, f, default_flow_style=False)
-				f.close()
-			# i hate this
-			self.title(fxy(self._l[self.clang.get()]['app_ttl']))
-			
-			# renaming the tabs is a bit weird cuz doing it the normal way breaks everything lmao
-			self.tabs._segmented_button._buttons_dict[old_name_1].configure(text=fxy(self._l[self.clang.get()]['tab_ttl_1']))
-			self.tabs._segmented_button._buttons_dict[old_name_2].configure(text=fxy(self._l[self.clang.get()]['tab_ttl_2']))
-			self.tabs._segmented_button._buttons_dict[old_name_3].configure(text=fxy(self._l[self.clang.get()]['tab_ttl_3']))
-
-			self.corp_lbl.configure(text=fxy(self._l[self.clang.get()]['corpus_folder']))
-			self.corp_btn.configure(text=fxy(self._l[self.clang.get()]['open']))
-			self.what_lang.configure(text=fxy(self._l[self.clang.get()]['lang_choice']))
-			self.trns_btn.configure(text=fxy(self._l[self.clang.get()]['run_trns']))
-			self.model_lbl.configure(text=fxy(self._l[self.clang.get()]['model_lbl']))
-			self.op_lbl.configure(text=fxy(self._l[self.clang.get()]['op_lbl']))
-			self.align_btn.configure(text=fxy(self._l[self.clang.get()]['run_align']))
-			self.set_lang_lbl.configure(text=fxy(self._l[self.clang.get()]['disp_lang']))
-			self.set_wh_lbl.configure(text=fxy(self._l[self.clang.get()]['wh_model']))
-
-		def update_wh_model(self):
-			self.inf_wh_model.set(self.set_wh_cmbo.get())
-			self.cfg['whisper_model'] = self.set_wh_cmbo.get()
-			with open('assets/cfg.yaml', 'w', encoding='utf-8') as f:
-				yaml.dump(self.cfg, f, default_flow_style=False)
-				f.close()
-			print(f"Set Whisper Model to {self.set_wh_cmbo.get()}")
-
+		self.main_window()
+		
+	def main_window(self):
 
 		# non GUI config stuff
 		# define and load strings
@@ -207,9 +65,41 @@ class App(ctk.CTk):
 		self.geometry(f"{350}x{250}")
 		self.resizable(height=False, width=False)
 
-		# including this to prevent error when running on Linux
+		# apparently trying to load an icon in linux breaks shit so. lawl.
 		if sys.platform == 'win32':
 			self.wm_iconbitmap("assets/tgm.ico")
+
+		def cmbo_callback(choice):
+			print('selected option:', choice)
+
+		def run_transcriber(self):
+			# initialize the whisper transcriber class
+			print("Initializing Whisper")
+			trnsr = whisper_func.Transcriber(self.trans_lang_choice.get(), self.inf_wh_model.get())
+			# get a list of each file path needing transcription
+			x = threading.Thread(target=whisper_func.Transcriber.run_transcription, args=(trnsr, self.trans_lang_choice.get(),))
+			x.start()
+
+		def run_sofa(self, ckpt, dictionary, op_format):
+			x = threading.Thread(target=sofa_func.infer_sofa(ckpt, dictionary, op_format,))
+			x.start()
+
+		def startfile(self, filename):
+			try:
+				os.startfile(filename)
+			except:
+				subprocess.Popen(['xdg-open', filename])
+
+		def update_wh_model(self):
+			self.inf_wh_model.set(self.set_wh_cmbo.get())
+			self.cfg['whisper_model'] = self.set_wh_cmbo.get()
+			with open('assets/cfg.yaml', 'w', encoding='utf-8') as f:
+				yaml.dump(self.cfg, f, default_flow_style=False)
+				f.close()
+			print(f"Set Whisper Model to {self.set_wh_cmbo.get()}")
+
+		def get_str(self, index):
+			return fxy(self._l[self.clang.get()][index])
 
 		# grid configs
 		self.grid_columnconfigure(0, weight=1)
@@ -220,9 +110,9 @@ class App(ctk.CTk):
 		self.tabs = ctk.CTkTabview(self)
 		self.tabs.grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky=tk.NSEW)
 
-		self.tab_ttl_1 = fxy(self._l[self.clang.get()]['tab_ttl_1'])
-		self.tab_ttl_2 = fxy(self._l[self.clang.get()]['tab_ttl_2'])
-		self.tab_ttl_3 = fxy(self._l[self.clang.get()]['tab_ttl_3'])
+		self.tab_ttl_1 = get_str(self, 'tab_ttl_1')
+		self.tab_ttl_2 = get_str(self, 'tab_ttl_2')
+		self.tab_ttl_3 = get_str(self, 'tab_ttl_3')
 
 		self.tabs.add(self.tab_ttl_1)
 		self.tabs.add(self.tab_ttl_2)
@@ -232,13 +122,6 @@ class App(ctk.CTk):
 		# add copyright text :)
 		self.credits = ctk.CTkLabel(self, text=fxy(self._l[self.clang.get()]['copyright']), text_color="gray50")
 		self.credits.grid(row=1, column=1, padx=20, pady=5, sticky=tk.N)
-
-		# progress bar
-		self.prog_bar = ctk.CTkProgressBar(self,
-										   orientation='horizontal',
-										   mode='indeterminate')
-		self.prog_bar.set(0)
-		self.prog_bar.grid(row=1, column=0, padx=20, pady=5, sticky=tk.EW)
 
 		#
 		#	Whisper Tab GUI Codes
@@ -255,7 +138,7 @@ class App(ctk.CTk):
 
 		# description label at the top
 		self.corp_lbl = ctk.CTkLabel(self.tabs.tab(self.tab_ttl_1),
-									 text=fxy(self._l[self.clang.get()]['corpus_folder']),
+									 text=get_str(self, 'corpus_folder'),
 									 justify='left')
 		self.corp_lbl.grid(row=0, column=0, padx=5, pady=5, sticky=tk.N)
 
@@ -347,7 +230,8 @@ class App(ctk.CTk):
 		# model choice combobox
 		self.set_lang_cmbo = ctk.CTkComboBox(self.tabs.tab(self.tab_ttl_3),
 										  	 values=self._l,
-										  	 command=lambda x: change_disp_lang(self, self.clang.get()),
+										  	 #command=lambda x: change_disp_lang(self, self.clang.get()),
+										  	 command=lambda x: self.refresh(self.clang.get()),
 										  	 variable=self.clang)
 		self.set_lang_cmbo.set(self.clang.get())
 		self.set_lang_cmbo.grid(row=0, column=1, padx=5, pady=5, sticky=tk.N)
@@ -363,8 +247,19 @@ class App(ctk.CTk):
 										   variable=self.inf_wh_model)
 		self.set_wh_cmbo.grid(row=1, column=1, padx=5, pady=5, sticky=tk.N)
 
-
+	def refresh(self, choice):
+		# Better option for updating the display language tbh.
+		self.cfg['disp_lang'] = choice
+		with open('assets/cfg.yaml', 'w', encoding='utf-8') as f:
+			yaml.dump(self.cfg, f, default_flow_style=False)
+			f.close()
+		self.destroy()
+		app = App()
+		app.mainloop()
 
 if __name__ == "__main__":
 	app = App()
-	app.mainloop()
+	try:
+		app.mainloop()
+	except:
+		print('Unable to open.')

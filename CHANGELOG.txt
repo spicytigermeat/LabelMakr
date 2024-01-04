@@ -1,0 +1,21 @@
+v001
+- Initial release
+- Supports only English SOFA Alignment with tgm_sofa
+
+v002
+- Fixed linux icon bug
+- Updated tgm_sofa to v004
+- Changed SOFA inference mode to force from match (gives better results to unseen speakers)
+
+v003
+- SOFA_GUI now only has full functionality on Windows
+	- this is because of the Japanese G2p relying on a precompiled '.exe' version of OpenJTalk.
+- Fully supports Japanese SOFA model by colstone.
+- Japanese transcripts are phoneme level, as the best results came from using a G2p as opposed to a dictionary.
+- Installation is now 1 step, the "installer.bat" file!
+- Huge code overhaul, including:
+	- better pipeline for changing display language (destroys the window and rebuilds it)
+	- put Whisper + SOFA functions into their own file to keep the code readable
+	- removed the need for aria2c and unzip by using gdown and zipfile
+	- readme file is a bit more clear
+- removed the progress bar because it doesn't work how I want it to :(
