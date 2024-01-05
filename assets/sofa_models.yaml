@@ -1,13 +1,13 @@
 models:
   tgm_sofa:
     name: 'tgm_sofa'
-    ver: 'v0.0.4'
+    ver: 'v0.0.1'
     language: 'English'
     ckpt_path: 'SOFA/ckpt/tgm_sofa_v004.ckpt'
     dict_path: 'SOFA/dictionary/tgm_sofa_dict.txt'
-  #colstone_jpn:
-  #  name: 'colstone_jpn'
-  #  ver: ''
-  #  language: 'Japanese'
-  #  ckpt_path: ''
-  #  dict_path: ''
+  colstone_jpn:
+    name: 'colstone_jpn'
+    ver: 'v0.0.2'
+    language: 'Japanese'
+    ckpt_path: 'SOFA/ckpt/colstone_sofa_v2.0.ckpt'
+    dict_path: 'SOFA/dictionary/jpn_phlvl.txt'
