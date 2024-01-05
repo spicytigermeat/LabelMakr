@@ -1,4 +1,5 @@
 import sys
+import os
 sys.path.append('.')
 from ftfy import fix_text as fxy
 import subprocess
@@ -20,7 +21,7 @@ class Transcriber(object):
 
 	def jpn_g2p(self, jpn):
 		# uses .exe version of openjtalk G2p
-		phonemes = subprocess.check_output(f"g2p-jp/japanese_g2p.exe -rs {jpn}", shell=False)
+		phonemes = subprocess.check_output(f"g2p-jp/japanese_g2p.exe -rs {jpn.replace(' ', '')}", shell=False)
 		g2p_op = str(phonemes)
 		fixed = re.sub(r"([aeiouAIEOUN])", r" \1 ", g2p_op[2:-5])
 		# fix cl
@@ -47,8 +48,17 @@ class Transcriber(object):
 		try:
 			for file in glob.glob('corpus/**/*.wav', recursive=True):
 				out_name = file[:-4] + '.lab'
-
-				answer = self.model.transcribe(file, suppress_tokens=[-1] + self.number_tokens)
+				txt_name = file[:-4] + '.txt'
+				answer = {}
+				if os.path.exists(txt_name):
+					with open(txt_name, 'r+', encoding='utf-8') as whis:
+						answer['text'] = whis.read()
+						whis.close()
+				elif os.path.exists(out_name):
+					continue
+				else:
+					answer = self.model.transcribe(file, suppress_tokens=[-1] + self.number_tokens)
+				
 				if lang.upper() == "JP":
 					trns_str_kanji = fxy(answer['text'])
 					trns_str = self.jpn_g2p(trns_str_kanji)
@@ -59,6 +69,10 @@ class Transcriber(object):
 				with open(out_name, 'w+', encoding='utf-8') as whis:
 					whis.write(trns_str)
 					whis.close()
+				if not os.path.exists(txt_name):
+					with open(txt_name, 'w+', encoding='utf-8') as whis:
+						whis.write(trns_str_kanji)
+						whis.close()
 
 				print(f"Wrote transcription for {file} in corpus.")
 
