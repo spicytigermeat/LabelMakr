@@ -1,5 +1,5 @@
-# SVS Label Generation Tool 🛋️
-GUI Tool for Whisper Transcription and SOFA Alignment
+# LabelMakr 🛋️
+A GUI Toolkit for generation of Singing Voice Synthesizer Phoneme-level labels, heavily utilizing SOFA & Whisper.
 
 ![image](https://github.com/spicytigermeat/SOFA_GUI/assets/103609620/bd9dcbca-facf-469f-9a09-08fb444c1afb)
 
