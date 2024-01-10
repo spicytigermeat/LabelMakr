@@ -1,16 +1,19 @@
 # LabelMakr 🛋️
 A GUI Toolkit for generation of Singing Voice Synthesizer Phoneme-level labels, heavily utilizing SOFA & Whisper.
 
-![image](https://github.com/spicytigermeat/SOFA_GUI/assets/103609620/bd9dcbca-facf-469f-9a09-08fb444c1afb)
+<p align="center">
+  <img src="https://github.com/spicytigermeat/LabelMakr/assets/103609620/3b482e7e-3f7c-42cf-a562-3ca0fdca2de0">
+</p>
 
 Please use the portable version for Windows found [here](https://github.com/spicytigermeat/SOFA_GUI/releases/tag/v003)
 
 # Credits 📰
 
-- SOFA developed by [qiuqiao](https://github.com/qiuqiao/SOFA)
-- [tgm_sofa](https://github.com/spicytigermeat/SOFA-Models/releases/tag/v0.0.4) is developed by me, tigermeat (used ver: v004)
+- SOFA & v1.0.0_mandarin_song.ckpt SOFA model developed by [suco/qiuqiao](https://github.com/qiuqiao/SOFA)
+- [tgm_sofa](https://github.com/spicytigermeat/SOFA-Models/releases/tag/v0.0.4) is developed by me, tigermeat (used ver: v005)
 - Japanese SOFA model trained by [colstone](https://github.com/colstone/SOFA_Models/releases/tag/JPN-V0.0.2b). The installed version is trimmed to save space. (used ver: v0.0.2)
 - Japanese G2p Compiled Version by [CjangCjengh](https://github.com/CjangCjengh/japanese_g2p)
+- Beta testers: nobodyP, Asteriski
 
 ## GUI Translations 🗣️
 - English/Japanese: tigermeat
@@ -20,9 +23,8 @@ Please use the portable version for Windows found [here](https://github.com/spic
 # Plans 📝
 
 - Implement automatic label cleanup (using labbu library)
+- Continued GUI refinement and improvements!
 - Clean up code and fix up localization method (i don't like i18n)
-- ~Implement support for Japanese model by colstone~ Implemented in v003
-
 
 # Manual installation 🧰
 
