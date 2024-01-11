@@ -19,3 +19,14 @@ v003
 	- removed the need for aria2c and unzip by using gdown and zipfile
 	- readme file is a bit more clear
 - removed the progress bar because it doesn't work how I want it to :(
+
+v010
+- Renamed from "SOFA_GUI" to "LabelMakr"!!!
+- Fixes to code
+- Changed some SOFA code to have it read ".txt" instead of ".lab"
+- GUI overhauls
+	- Logo
+	- Custom font
+	- Fixed a lot of GUI related code
+- Added Transcription editor
+- Added "use tensorcores" in settings! This can speed up inference if your GPU has tensorcores.

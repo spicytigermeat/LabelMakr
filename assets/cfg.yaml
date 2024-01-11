@@ -1,0 +1,3 @@
+disp_lang: en_US
+matmul: true
+whisper_model: large

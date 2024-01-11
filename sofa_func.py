@@ -1,7 +1,12 @@
 import sys
 import pathlib
+import torch
 
-def infer_sofa(ckpt, dictionary, op_format):
+def infer_sofa(ckpt, dictionary, op_format, matmul_bool):
+	#
+	# Much of this code was referenced from "infer.py"
+	# in the SOFA source code! :)
+	#
 	print('Running SOFA')
 	sys.path.append('./SOFA')
 	from SOFA.infer import save_htk, save_textgrids, post_processing, fill_small_gaps, add_SP
@@ -10,11 +15,15 @@ def infer_sofa(ckpt, dictionary, op_format):
 	import click
 	import lightning as pl
 	import textgrid
-	import torch
+
+	# use tensorcores, if selected!
+	if matmul_bool:
+		torch.set_float32_matmul_precision('medium')
 
 	# set up the G2P, which currently is just a dictionary
 	g2p_class = getattr(g2p, "DictionaryG2P")
 	grapheme_to_phoneme = g2p_class(dictionary=dictionary)
+	grapheme_to_phoneme.set_in_format('txt')
 
 	# set up the AP Detector
 	AP_detector_class = getattr(AP_detector, 'LoudnessSpectralcentroidAPDetector')
@@ -30,8 +39,14 @@ def infer_sofa(ckpt, dictionary, op_format):
 	trainer = pl.Trainer(logger=False)
 
 	# run predictions
-	predictions = trainer.predict(model, dataloaders=dataset, return_predictions=True)
-	predictions = get_AP.process(predictions)
+	try:
+		predictions = trainer.predict(model, dataloaders=dataset, return_predictions=True)
+	except IndexError as e:
+		print(f"\nOne or more of your transcriptions are causing issues, please correct them with the transcription editor! {e}")
+	try:
+		predictions = get_AP.process(predictions)
+	except TypeError as e:
+		print(f"\n Error in one or more transcriptions, please correct them with the transcription editor!\n\n Error Code: {e}\n\n")
 	predictions = post_processing(predictions)
 
 	# output
