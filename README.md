@@ -13,7 +13,7 @@ Please use the portable version for Windows found [here](https://github.com/spic
 - [tgm_sofa](https://github.com/spicytigermeat/SOFA-Models/releases/tag/v0.0.4) is developed by me, tigermeat (used ver: v005)
 - Japanese SOFA model trained by [colstone](https://github.com/colstone/SOFA_Models/releases/tag/JPN-V0.0.2b). The installed version is trimmed to save space. (used ver: v0.0.2)
 - Japanese G2p Compiled Version by [CjangCjengh](https://github.com/CjangCjengh/japanese_g2p)
-- Beta testers: nobodyP, Asteriski
+- Beta testers: nobodyP, Asteriski, Guillotama
 
 ## GUI Translations 🗣️
 - English/Japanese: tigermeat
