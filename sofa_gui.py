@@ -42,6 +42,7 @@ class App(ctk.CTk):
 					self.cfg.update(yaml.safe_load(c))
 				except yaml.YAMLError as exc:
 					print(exc)
+			c.close()
 
 		# should this be a StringVar? :thonking:
 		self.clang = ctk.StringVar(value=self.cfg['disp_lang'])
