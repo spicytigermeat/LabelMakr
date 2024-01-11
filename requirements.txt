@@ -1,4 +1,4 @@
-openvpi-whisper
+openai-whisper
 customtkinter
 ftfy
 pykakasi

@@ -23,7 +23,7 @@ en_US:
   # settings:
   disp_lang: 'Display Language'
   wh_model: 'Whisper Model'
-jp_JP:
+ja_JP:
   lang_code: '日本語'
   app_ttl: 'SVSベースラベル作成ツール'
   tab_ttl_1: '転写'
@@ -45,12 +45,12 @@ jp_JP:
   # settings:
   disp_lang: '表示言語'
   wh_model: 'Whisperモデル'
-zh_ZH:
+zh_Hant:
   # translation by ArchiVoice
   lang_code: '中文 (繁體)'
   app_ttl: 'SVS 標註生成工具'
-  tab_ttl_1: '標註'
-  tab_ttl_2: '轉錄'
+  tab_ttl_1: '轉錄'
+  tab_ttl_2: '標註'
   tab_ttl_3: '設定'
   copyright: '© tigermeat 2023'
 
@@ -67,6 +67,29 @@ zh_ZH:
 
   # settings:
   disp_lang: '顯示語言'
+  wh_model: 'Whisper模型'
+zh_Hans:
+  # translation by oxygen-dioxide
+  lang_code: '中文 (简体)'
+  app_ttl: 'SVS 标注生成工具'
+  tab_ttl_1: '转录'
+  tab_ttl_2: '标注'
+  tab_ttl_3: '设置'
+  copyright: '© tigermeat 2023'
+
+  #transcription window strings:
+  corpus_folder: '数据集位置:'
+  open: '打开'
+  lang_choice: '转录语言'
+  run_trns: '运行转录'
+
+  # aligner window strings:
+  model_lbl: '选择 SOFA 模型:'
+  op_lbl: '选择输出格式:'
+  run_align: '运行 SOFA'
+
+  # settings:
+  disp_lang: '显示语言'
   wh_model: 'Whisper模型'
 id_ID:
   # translation by Koji
