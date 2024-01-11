@@ -30,12 +30,18 @@ class App(ctk.CTk):
 
 		# non GUI config stuff
 		# define and load strings
-		self.cfg = {}
-		with open('assets/cfg.yaml', 'r', encoding='utf-8') as c:
-			try:
-				self.cfg = yaml.safe_load(c)
-			except yaml.YAMLError as exc:
-				print(exc)
+
+		#Default config
+		self.cfg = {
+			'disp_lang': 'en_US',
+			'whisper_model': 'medium'
+		}
+		if(pathlib.Path('assets/cfg.yaml').exists()):
+			with open('assets/cfg.yaml', 'r', encoding='utf-8') as c:
+				try:
+					self.cfg.update(yaml.safe_load(c))
+				except yaml.YAMLError as exc:
+					print(exc)
 			c.close()
 
 		# should this be a StringVar? :thonking:
@@ -89,6 +95,17 @@ class App(ctk.CTk):
 				os.startfile(filename)
 			except:
 				subprocess.Popen(['xdg-open', filename])
+		
+		def startfolder(self, foldername):
+			"""
+			Open a folder in file explorer
+			If the folder doesn't exist, create it.
+			"""
+			folder = pathlib.Path(foldername)
+			#create the folder if it doesn't exist
+			if(not folder.is_dir()):
+				folder.mkdir()
+			startfile(self, folder)
 
 		def update_wh_model(self):
 			self.inf_wh_model.set(self.set_wh_cmbo.get())
@@ -144,7 +161,7 @@ class App(ctk.CTk):
 
 		self.corp_btn = ctk.CTkButton(self.tabs.tab(self.tab_ttl_1),
 									  text=fxy(self._l[self.clang.get()]['open']),
-									  command=lambda: startfile(self, 'corpus'))
+									  command=lambda: startfolder(self, 'corpus'))
 		self.corp_btn.grid(row=0, column=1, padx=5, pady=5, sticky=tk.N)
 
 		# what lang are you transcribing?
