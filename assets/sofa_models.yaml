@@ -3,7 +3,7 @@ models:
     name: 'tgm_sofa'
     ver: 'v0.0.5'
     language: 'en_US, en_UK'
-    ckpt_path: 'SOFA/ckpt/tgm_sofa_v100.ckpt'
+    ckpt_path: 'SOFA/ckpt/tgm_sofa_v005.ckpt'
     dict_path: 'SOFA/dictionary/tgm_sofa_dict.txt'
     hint: 'English SOFA Model trained by tigermeat.'
   colstone_jpn:
