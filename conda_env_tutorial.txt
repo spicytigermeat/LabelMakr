@@ -1,0 +1,34 @@
+If you'd prefer to install this using a conda environment, follow these steps:
+
+conda create -n SOFA python=3.8 -y
+
+The following 2 steps will need to be repeated any time you close and reopen the conda prompt window.
+
+conda activate SOFA
+cd {path_to_SOFA_GUI_folder}
+
+Next, install whichever version of torch you need. To check which CUDA you are running, type in:
+nvidia-smi
+
+torch w cu118:
+pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu118
+
+torch w cu121:
+pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu121
+
+torch w just CPU:
+pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cpu
+
+Next, install the rest of the stuff:
+
+pip install openai-whisper customtkinter ftfy gdown
+
+Now, run the "install_assets" script.
+
+python install_assets.py
+
+You will then need to move the two ".ckpt" files into "SOFA/ckpt" for them to function properly.
+
+Now, to run the GUI:
+
+python sofa_gui.py.

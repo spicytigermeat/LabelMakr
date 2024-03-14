@@ -6,6 +6,7 @@ import subprocess
 import re
 import glob
 from pypinyin import lazy_pinyin
+from pathlib import Path as P
 
 class Transcriber(object):
 	def __init__(self, lang, wh_model):
@@ -13,6 +14,7 @@ class Transcriber(object):
 		import whisper
 		from whisper.tokenizer import get_tokenizer
 
+		self.fr_contraction = ["m'", "n'", "l'", "j'", "c'", "ç'", "s'", "t'", "d'", "qu'"]
 		# referenced code from MLo7's MFA Notebook :)
 		self.model = whisper.load_model(wh_model)
 		whisper.DecodingOptions(language=lang.lower())
@@ -43,7 +45,7 @@ class Transcriber(object):
 
 		for file in glob.glob('corpus/**/*.wav', recursive=True):
 			try:
-				out_name = file[:-4] + '.txt'
+				out_name = P(file).with_suffix('.txt')
 				# get transcription from Whisper
 				answer = self.model.transcribe(file, suppress_tokens=[-1] + self.number_tokens)
 				
@@ -58,6 +60,11 @@ class Transcriber(object):
 					trns_str = ""
 					for word in hanzi_list:
 						trns_str += f"{word} "
+				elif lang.upper() == "FR":
+					# adds a space after any contractions for the sake of the dictionary
+					trns_str = re.sub(r"[-]", " ", fxy(answer['text']).lower())
+					for con in self.fr_contraction:
+						trns_str = re.sub(f"{con}", f"{con} ", trns_str)
 				else:
 					# the default, currently just being used by English.
 					trns_str = fxy(answer['text']).lower()

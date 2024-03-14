@@ -30,3 +30,17 @@ v010
 	- Fixed a lot of GUI related code
 - Added Transcription editor
 - Added "use tensorcores" in settings! This can speed up inference if your GPU has tensorcores.
+- Implemented suco's Mandarin singing model!
+
+v020
+- Included a precompiled version of ffmpeg to avoid a "cannot find files" error that a lot of people were having.
+- Upgraded included version of SOFA to 1.0.2
+	- not huge changes, but included some bug fixes.
+	- labels will now export to "corpus/{speaker}/labels" as opposed to "corpus/{speaker}/htk/phones"
+- Added SOFA model & GUI translation for FRENCH!
+	- uses a Millefeuille SOFA model developed by @imsupposedto.
+	- GUI translation by Hibya and Mim.
+	- French transcriptions automatically account for contractions (j' in j'taime)
+- Implemented the tenatively named "OovG2P" into SOFA.
+	- this utilizes OpenUTAU's G2P model system to guess the pronunciation for words that are not in the given dictionaries.
+	- This is only applied to English and French, since Japanese has it's own weird G2p thing and Chinese... doesn't really need one.

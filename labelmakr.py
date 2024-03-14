@@ -15,7 +15,7 @@ from CTkListbox import *
 
 # function stuff
 import yaml
-import pathlib
+from pathlib import Path as p
 import warnings
 
 # LabelMakr specific functions
@@ -27,7 +27,7 @@ warnings.filterwarnings("ignore")
 
 # default stuff configurations :)
 ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme('assets/ctk_tgm_theme.json')
+ctk.set_default_color_theme(p('assets/ctk_tgm_theme.json'))
 ctk.deactivate_automatic_dpi_awareness()
 
 class transcriptEditor(ctk.CTkToplevel):
@@ -45,34 +45,35 @@ class transcriptEditor(ctk.CTkToplevel):
 		# configure window
 		self.title(fxy(self._l[self.clang.get()]['transcription_editor']))
 		self.geometry(f"{710}x{321}")
-		self.resizable(height=False, width=False)
+		self.resizable(height=True, width=True)
+		self.minsize(width=710, height=321)
 		if sys.platform == 'win32':
-			self.wm_iconbitmap("assets/tgm.ico")
-			self.after(200, lambda: self.iconbitmap("assets/tgm.ico"))
+			if p('assets/tgm.icon').exists():
+				self.wm_iconbitmap("assets/tgm.ico")
+			self.after(200, lambda: self.iconbitmap(p('assets/tgm.ico')))
 
-		self.grid_columnconfigure(0, weight=1)
+		self.grid_columnconfigure((0, 1), weight=1)
+		self.grid_rowconfigure(0, weight=3)
+		self.grid_rowconfigure(1, weight=1)
 
 		#
 		#	TEXT BOX
 		#
 
-		self.text_box = ctk.CTkTextbox(self, width=500, height=250, wrap='word', activate_scrollbars=True)
-		self.text_box.place(x=10, y=10)
+		self.text_box = ctk.CTkTextbox(self, wrap='word', activate_scrollbars=True)
+		self.text_box.grid(row=0, column=0, padx=(5, 0), pady=(5, 0), sticky=tk.NSEW)
 
 		#
 		#	FILE FRAME (Scrollable)
 		#
 
 		# file frame
-		self.file_frame = ctk.CTkFrame(self, width=160, height=290)
-		self.file_frame.place(x=520, y=10)
 
 		self.file_list = [file for file in glob.glob('corpus/**/*.txt')]
 
 		# listbox
-		self.file_sel = CTkListbox(self.file_frame, width=155,
-								   multiple_selection=False,
-								   height=280)
+		self.file_sel = CTkListbox(self, width=155,
+								   multiple_selection=False)
 		self.file_sel.bind("<<ListboxSelect>>", lambda x: self.load_label())
 
 		# placing all label files into the thingymajig.
@@ -81,16 +82,16 @@ class transcriptEditor(ctk.CTkToplevel):
 			self.file_sel.insert(i, self.file_list[i])
 			self.file_list_index[self.file_list[i]] = i
 		
-		self.file_sel.pack(fill=tk.BOTH, expand=True)
+		self.file_sel.grid(row=0, column=1, rowspan=2, padx=5, pady=5, sticky=tk.NSEW)
 
 		#
 		#	BUTTON FRAME
 		#
 
-		self.button_frame = ctk.CTkFrame(self, width=500)
-		self.button_frame.place(x=10, y=270)
+		self.button_frame = ctk.CTkFrame(self, height=50)
+		self.button_frame.grid(row=1, column=0, padx=(5, 0), pady=5, sticky=tk.EW)
 
-		self.button_frame.grid_rowconfigure(0, weight=1)
+		self.button_frame.grid_rowconfigure(0, weight=0)
 
 		# play button
 		self.play_audio_btn = ctk.CTkButton(self.button_frame, 
@@ -126,20 +127,25 @@ class transcriptEditor(ctk.CTkToplevel):
 
 		self.text_box.delete("0.0", tk.END)
 
-		with open(self.file_sel.get(self.file_sel.curselection()), 'r', encoding='utf-8') as lbl:
+		open_path = p(self.file_sel.get(self.file_sel.curselection()))
+
+		with open(open_path, 'r', encoding='utf-8') as lbl:
 			self.text_box.insert("0.0", lbl.read())
 			lbl.close()
 
 	def save_label(self):
+
+		save_path = p(self.file_sel.get(self.file_sel.curselection()))
 		
 		try:
-			with open(self.file_sel.get(self.file_sel.curselection()), 'w+', encoding='utf-8') as lbl:
+			with open(save_path, 'w+', encoding='utf-8') as lbl:
 				lbl.write(self.text_box.get("0.0", tk.END))
 				lbl.close()
 		except:
-			print(f"Cannot write label for {self.file_sel.get(self.file_sel.curselection())}. Make sure you do not have it open in an external program.")
+			print(f"Cannot write label for {self.file_sel.get(self.file_sel.curselection())}. ",
+				  "Make sure you do not have it open in an external program.")
 
-		print(f"Wrote label as {self.file_sel.get(self.file_sel.curselection())}.")
+		print(f"Wrote label as {save_path}.")
 
 	def save_and_next(self):
 		# of course, save the label first
@@ -154,13 +160,12 @@ class transcriptEditor(ctk.CTkToplevel):
 	def play_audio(self):
 		try:
 			mixer.init()
-			sound_name = self.file_sel.get()[:-4] + '.wav'
-			p = pathlib.Path(sound_name)
-			mixer.music.load(str(p.resolve()))
+			sound_name = p(self.file_sel.get()).resolve()
+			mixer.music.load(p(sound_name).with_suffix('.wav'))
 			x = threading.Thread(target=mixer.music.play(), args=())
 			x.start()
 		except:
-			print('Unable to play audio.')
+			print(f"Unable to play audio file {p(sound_name).with_suffix('.wav')}")
 
 	def pause_audio(self):
 		try:
@@ -178,7 +183,7 @@ class transcriptEditor(ctk.CTkToplevel):
 			mixer.music.stop()
 			self.pause_audio_btn.configure(text=fxy(self._l[self.clang.get()]['pause']))
 		except:
-			print('Cannot stop music.')
+			print('Cannot stop music. Run for your life.')
 
 
 class LabelMakr(ctk.CTk):
@@ -196,7 +201,7 @@ class LabelMakr(ctk.CTk):
 			'matmul': True,
 			'whisper_model': 'medium'
 		}
-		if(pathlib.Path('assets/cfg.yaml').exists()):
+		if p('assets/cfg.yaml').exists():
 			with open('assets/cfg.yaml', 'r', encoding='utf-8') as c:
 				try:
 					self.cfg.update(yaml.safe_load(c))
@@ -210,39 +215,52 @@ class LabelMakr(ctk.CTk):
 		self.matmul_var = ctk.BooleanVar(value=self.cfg['matmul'])
 
 		self._l = {}
-		with open('assets/lang.yaml', 'r', encoding='utf-8') as f:
-			try:
-				self._l = yaml.safe_load(f)
-			except yaml.YAMLError as exc:
-				print(exc)
-			f.close()
+		if p('assets/lang.yaml').exists():
+			with open(p('assets/lang.yaml'), 'r', encoding='utf-8') as f:
+				try:
+					self._l = yaml.safe_load(f)
+				except yaml.YAMLError as exc:
+					print(exc)
+				f.close()
+		else:
+			print('Cannot load language file in assets folder.')
 
 		self.sofa_models = {}
-		with open('assets/sofa_models.yaml', 'r', encoding='utf-8') as s:
-			try:
-				self.sofa_models = yaml.safe_load(s)
-			except yaml.YAMLError as exc:
-				print(exc)
-			s.close()
+		if p('assets/sofa_models.yaml').exists():
+			with open('assets/sofa_models.yaml', 'r', encoding='utf-8') as s:
+				try:
+					self.sofa_models = yaml.safe_load(s)
+				except yaml.YAMLError as exc:
+					print(exc)
+				s.close()
+		else:
+			print('Cannot load sofa model file in assets folder.')
 
 		self.disp_lang = ctk.StringVar(value=self.clang.get())
 
 		# window config
 		self.title(fxy(self._l[self.clang.get()]['app_ttl']))
-		self.geometry(f"{327}x{320}")
-		self.resizable(height=False, width=False)
+		self.geometry(f"{330}x{330}")
+		self.resizable(height=False, width=True)
+		self.minsize(width=330, height=330)
 
 		# apparently trying to load an icon in linux breaks shit so. lawl.
 		if sys.platform == 'win32':
-			self.wm_iconbitmap("assets/tgm.ico")
+			if p('assets/tgm.ico').exists():
+				self.wm_iconbitmap(p('assets/tgm.ico'))
+			else:
+				print('Cannot load icon file.')
 
 		#
 		#	TITLE LABEL
 		#
 
-		self.labelmakr_logo = ctk.CTkImage(light_image=Image.open('assets/labelmakr.png'), size=(300,30))
+		self.grid_columnconfigure(0, weight=1)
+
+		self.labelmakr_img = p('assets/labelmakr.png')
+		self.labelmakr_logo = ctk.CTkImage(light_image=Image.open(self.labelmakr_img), size=(300,30))
 		self.title_lbl = ctk.CTkLabel(self, image=self.labelmakr_logo, text='')
-		self.title_lbl.place(x=15, y=10)
+		self.title_lbl.grid(padx=5, pady=(10, 5), sticky=tk.EW)
 
 		#
 		#	Unnecessarily long tab configuration
@@ -251,7 +269,7 @@ class LabelMakr(ctk.CTk):
 		# commented lines are for future features
 
 		self.tabs = ctk.CTkTabview(self)
-		self.tabs.place(x=163, y=40, anchor=tk.N)
+		self.tabs.grid(padx=5, pady=(0, 5), sticky=tk.EW)
 
 		self.tab_ttl_1 = self.get_str('tab_ttl_1')
 		self.tab_ttl_2 = self.get_str('tab_ttl_2')
@@ -266,7 +284,7 @@ class LabelMakr(ctk.CTk):
 
 		# add copyright text :)
 		self.credits = ctk.CTkLabel(self, text=fxy(self._l[self.clang.get()]['copyright']), text_color="gray50")
-		self.credits.place(x=90, y=291)
+		self.credits.grid(padx=5, pady=(0, 5), sticky=tk.EW)
 
 		#
 		#	Whisper Tab GUI Codes
@@ -298,7 +316,7 @@ class LabelMakr(ctk.CTk):
 		self.what_lang.grid(row=1, column=0, padx=5, pady=5, sticky=tk.N)
 
 		# lang combobox, just english for now :)
-		self.transcribe_lang_op = ['EN', 'JP', 'ZH']
+		self.transcribe_lang_op = ['EN', 'JP', 'ZH', 'FR']
 		self.lang_cmbo = ctk.CTkComboBox(self.tabs.tab(self.tab_ttl_1),
 										 values=self.transcribe_lang_op,
 										 variable=self.trans_lang_choice)
@@ -451,7 +469,7 @@ class LabelMakr(ctk.CTk):
 		x.start()
 
 	def run_sofa(self, ckpt, dictionary, op_format):
-		x = threading.Thread(target=sofa_func.infer_sofa(ckpt, dictionary, op_format, self.matmul_var.get(),))
+		x = threading.Thread(target=sofa_func.infer_sofa(ckpt, dictionary, op_format, self.matmul_var.get(), self.lang_cmbo.get(),))
 		x.start()
 
 	def startfile(self, filename):
@@ -465,7 +483,7 @@ class LabelMakr(ctk.CTk):
 			Open a folder in file explorer
 			If the folder doesn't exist, create it.
 			"""
-			folder = pathlib.Path(foldername)
+			folder = p(foldername)
 			#create the folder if it doesn't exist
 			if(not folder.is_dir()):
 				folder.mkdir()

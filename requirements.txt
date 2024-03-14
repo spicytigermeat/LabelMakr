@@ -1,4 +1,8 @@
 openai-whisper
 customtkinter
+CTkListbox
+pygame
 ftfy
-pykakasi
+gdown
+pypinyin
+pillow

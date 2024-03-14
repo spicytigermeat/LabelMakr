@@ -13,10 +13,12 @@ python -m pip install -r requirements.txt
 echo INSTALLING MODELS + ASSETS
 
 rem this installs the models + other big stuff, like ~800mb
+aria2c https://github.com/spicytigermeat/LabelMakr/releases/download/assets_v020/labelmakr_assets.zip
 python install_assets.py
 move "colstone_sofa_v2.0.ckpt" "SOFA/ckpt"
 move "tgm_sofa_v005.ckpt" "SOFA/ckpt"
 move "v1.0.0_mandarin_singing.ckpt" "SOFA/ckpt"
+move "millefeuille.ckpt" "SOFA/ckpt"
 del labelmakr_assets.zip
 
 echo SETUP COMPLETE!!!

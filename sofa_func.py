@@ -2,7 +2,7 @@ import sys
 import pathlib
 import torch
 
-def infer_sofa(ckpt, dictionary, op_format, matmul_bool):
+def infer_sofa(ckpt, dictionary, op_format, matmul_bool, lang):
 	#
 	# Much of this code was referenced from "infer.py"
 	# in the SOFA source code! :)
@@ -20,9 +20,15 @@ def infer_sofa(ckpt, dictionary, op_format, matmul_bool):
 	if matmul_bool:
 		torch.set_float32_matmul_precision('medium')
 
-	# set up the G2P, which currently is just a dictionary
-	g2p_class = getattr(g2p, "DictionaryG2P")
-	grapheme_to_phoneme = g2p_class(dictionary=dictionary)
+	# set up the G2P, based on the language selected.
+	if lang in ['EN', 'FR']:
+		g2p_class = getattr(g2p, "OovG2P")
+		grapheme_to_phoneme = g2p_class(dictionary=dictionary, 
+										g2p_model=f'SOFA/models/{lang.lower()}_g2p/model.ptsd',
+										g2p_cfg=f'SOFA/models/{lang.lower()}_g2p/cfg.yaml')
+	else:
+		g2p_class = getattr(g2p, "DictionaryG2P")
+		grapheme_to_phoneme = g2p_class(dictionary=dictionary)
 	grapheme_to_phoneme.set_in_format('txt')
 
 	# set up the AP Detector
