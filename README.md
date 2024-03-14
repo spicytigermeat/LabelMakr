@@ -5,20 +5,23 @@ A GUI Toolkit for generation of Singing Voice Synthesizer Phoneme-level labels, 
   <img src="https://github.com/spicytigermeat/LabelMakr/assets/103609620/3b482e7e-3f7c-42cf-a562-3ca0fdca2de0">
 </p>
 
-Please use the portable version for Windows found [here](https://github.com/spicytigermeat/SOFA_GUI/releases/tag/v003)
+Please use the portable version for Windows found [here](https://github.com/spicytigermeat/LabelMakr/releases/tag/v020)!!
 
 # Credits 📰
 
-- SOFA & v1.0.0_mandarin_song.ckpt SOFA model developed by [suco/qiuqiao](https://github.com/qiuqiao/SOFA)
+- SOFA & v1.0.0_mandarin_song.ckpt SOFA model developed by [suco/qiuqiao](https://github.com/qiuqiao/SOFA).
 - [tgm_sofa](https://github.com/spicytigermeat/SOFA-Models/releases/tag/v0.0.4) is developed by me, tigermeat (used ver: v005)
 - Japanese SOFA model trained by [colstone](https://github.com/colstone/SOFA_Models/releases/tag/JPN-V0.0.2b). The installed version is trimmed to save space. (used ver: v0.0.2)
-- Japanese G2p Compiled Version by [CjangCjengh](https://github.com/CjangCjengh/japanese_g2p)
-- Beta testers: nobodyP, Asteriski, Guillotama
+- Japanese G2p Compiled Version by [CjangCjengh](https://github.com/CjangCjengh/japanese_g2p).
+- Millefeuille SOFA model & fr_g2p model trained by [imsupposedto](https://github.com/imsupposedto).
+- G2P models used are trained with [OpenUTAU's G2P system](https://github.com/stakira/OpenUtau/tree/master/py).
+- Beta testers: nobodyP, Asteriski, Guillotama, imsupposedto
 
 ## GUI Translations 🗣️
 - English/Japanese: tigermeat
 - Traditional Chinese: ArchiVoice
 - Indonesian: Koji
+- French: Hibya & Mim
 
 # Plans 📝
 
