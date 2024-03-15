@@ -9,7 +9,7 @@ Please use the portable version for Windows found [here](https://github.com/spic
 
 ## Community Contributions 🧑‍🤝‍🧑
 
-- French Usage Guide can be found [here](https://utaufrance.com/comment-utiliser-labelmakr/)!
+- French Usage Guide can be found [here](https://utaufrance.com/comment-utiliser-labelmakr/)! (Written by [Mim](https://twitter.com/mimsynth))
 
 # Credits 📰
 
