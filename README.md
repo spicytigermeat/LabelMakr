@@ -7,6 +7,10 @@ A GUI Toolkit for generation of Singing Voice Synthesizer Phoneme-level labels, 
 
 Please use the portable version for Windows found [here](https://github.com/spicytigermeat/LabelMakr/releases/tag/v020)!!
 
+## Community Contributions 🧑‍🤝‍🧑
+
+- French Usage Guide can be found [here](https://utaufrance.com/comment-utiliser-labelmakr/)!
+
 # Credits 📰
 
 - SOFA & v1.0.0_mandarin_song.ckpt SOFA model developed by [suco/qiuqiao](https://github.com/qiuqiao/SOFA).
