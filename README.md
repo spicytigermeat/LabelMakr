@@ -35,4 +35,4 @@ Please use the portable version for Windows found [here](https://github.com/spic
 
 ## Manual Installation 🧰
 
-Read the guide on how to manually install LabelMakr [here](https://github.com/spicytigermeat/LabelMakr/manual_install_guide.md)!
+Read the guide on how to manually install LabelMakr [here](https://github.com/spicytigermeat/LabelMakr/blob/main/manual_install_guide.md)!
