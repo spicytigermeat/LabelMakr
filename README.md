@@ -1,6 +1,8 @@
 # LabelMakr 🛋️
 A GUI Toolkit for generation of Singing Voice Synthesizer Phoneme-level labels, heavily utilizing SOFA & Whisper.
 
+Follow development on trello [here](https://trello.com/b/ybVNYcmA/labelmakr)!
+
 <p align="center">
   <img src="https://github.com/spicytigermeat/LabelMakr/assets/103609620/3b482e7e-3f7c-42cf-a562-3ca0fdca2de0">
 </p>
