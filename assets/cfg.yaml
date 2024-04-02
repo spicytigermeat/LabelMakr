@@ -1,3 +1,5 @@
+dark_mode: true
 disp_lang: en_US
+force_cpu: false
 matmul: true
 whisper_model: large

@@ -1,0 +1,66 @@
+lang_code: "한국어 (KO)"
+app_ttl: "레이블 메이커"
+tab_ttl_1: "트랜스크립션"
+tab_ttl_2: "정렬"
+tab_ttl_3: "레이블 수정"
+tab_ttl_4: "설정"
+
+# transcription window strings:
+corpus_folder: "코퍼스 폴더 열기"
+corpus_folder_tt: "트랜스크립트할 .wav 파일을 넣을 폴더를 엽니다."
+lang_choice: "전사 언어"
+lang_choice_tt: "파일이 트랜스크립션될 언어입니다. 또한 정렬하기 전에 SOFA에 어떤 유형의 전처리를 수행할지 알려줍니다."
+run_trns: "오디오 트랜스크립트"
+run_trns_tt: "Whisper로 말뭉치 폴더에 있는 파일의 트랜스 크립 션을 실행합니다."
+
+# aligner window strings:
+model_lbl: "Choose SOFA Model"
+model_lbl_tt: "Select the SOFA model you will use to align the phonemes to your transcriptions."
+op_lbl: "Choose output format"
+
+# note for translators:
+# | in YAML allows for multi-line strings that retain linebreaks.
+# it doesn't use "" but it's still a string, so don't put many special characters in there.
+op_lbl_tt: |
+  TextGrid: A format for use with Praat. Contains word and phoneme level transcription.
+
+  htk (default): Standard SVS phoneme-level labels. 
+  Does not save word level transcriptions, phoneme level only.
+
+run_align: "Align Labels"
+run_align_tt: "Aligns labels based on transcripts using the selected SOFA model."
+
+# settings:
+disp_lang: "Display Language"
+disp_lang_tt: "Change LabelMakr's display language."
+wh_model: "Whisper Model"
+wh_model_tt: "Change the Whisper model used in inference."
+use_tensorcore: "Use Tensorcores"
+use_tensorcore_tt: "Use your GPU's tensorcores. This may speed up inference a bit. Not required."
+force_cpu: "Force CPU Render"
+force_cpu_tt: "Forces LabelMakr to render on CPU. Limits you to 'small' Whisper model."
+dark_mode: "Dark Mode"
+dark_mode_tt: "Toggle Dark Mode."
+
+# transcription editor:
+transcription_editor: "Transcription Editor"
+transcription_editor_tt: "Open the built in transcription editor."
+play: "Play"
+pause: "Pause"
+unpause: "Unpause"
+stop: "Stop"
+save: "Save"
+next: "Save & Load next label."
+
+# labbu stuff:
+labbu_help: "＊ Hover over each box to learn what they do. ＊"
+dxer: "Estimate [dx]"
+dxer_tt: "Guesses what [t] and [d] should become [dx] based on surrounding phonemes and length. English ONLY."
+uhr_merge: "Merge [uh r]"
+uhr_merge_tt: "Merges [uh r] into a single [er] phoneme. English ONLY."
+merge_dupes: "Merge Duplicates"
+merge_dupes_tt: "Merge any duplicated phonemes into a single field."
+short_h: "Merge short [h]"
+short_h_tt: "Merge any very short, unpronounced [hh]/[h]."
+run_fix: "Fix Labels"
+run_fix_tt: "Run the fix functions on all generated labels in your corpus."

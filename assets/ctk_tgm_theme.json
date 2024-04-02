@@ -84,9 +84,9 @@
   },
   "CTkOptionMenu": {
     "corner_radius": 6,
-    "fg_color": ["#3a7ebf", "#1f538d"],
-    "button_color": ["#325882", "#14375e"],
-    "button_hover_color": ["#234567", "#1e2c40"],
+    "fg_color": ["DarkGoldenrod3", "DarkGoldenrod3"],
+    "button_color": ["DarkGoldenrod3", "DarkGoldenrod3"],
+    "button_hover_color": ["DarkGoldenrod4", "DarkGoldenrod4"],
     "text_color": ["#DCE4EE", "#DCE4EE"],
     "text_color_disabled": ["gray74", "gray60"]
   },

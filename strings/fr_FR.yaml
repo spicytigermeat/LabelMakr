@@ -1,0 +1,68 @@
+# translation by Hibya and Mim
+lang_code: "Français (FR)"
+app_ttl: "LabelMakr"
+tab_ttl_1: "Transcriptions"
+tab_ttl_2: "Alignements"
+tab_ttl_3: "Corriger les labels"
+tab_ttl_4: "Paramètres"
+
+# transcription window strings:
+corpus_folder: "Dossier du Corpus"
+corpus_folder_tt: "Ouvre le dossier où vous placerez les fichiers .wav à transcrire."
+lang_choice: "Langue transcrite"
+lang_choice_tt: "Détermine la langue dans laquelle vos fichiers seront transcrits. Cette option détermine aussi le type de traitement que SOFA doit effectuer sur les transcriptions avant l'alignement."
+run_trns: "Lancer la transcription"
+run_trns_tt: "Lance la transcription des fichiers dans le dossier 'corpus' à l'aide de Whisper."
+
+# aligner window strings:
+model_lbl: "Sélectionnez le modèle SOFA"
+model_lbl_tt: "Détermine le modèle SOFA utilisé pour aligner les phonèmes de vos transcriptions."
+op_lbl: "Séléctionnez le format de sortie"
+
+# note for translators:
+# | in YAML allows for multi-line strings that retain linebreaks.
+# it doesn't use "" but it's still a string, so don't put many special characters in there.
+# also, keep indentation the same.
+op_lbl_tt: |
+  TextGrid: Format à utiliser avec Praat. Enregistre à le fois la transcription des paroles et leurs phonèmes.
+
+  htk (default): Format standard pour les labels de synthèse vocal chantée. 
+  N'enregistre pas la transcription des paroles, seulement leurs phonèmes.
+
+run_align: "Aligner les Labels"
+run_align_tt: "Aligne les labels d'après les transcriptions à l'aide du modèle SOFA sélectionné."
+
+# settings:
+disp_lang: "Langue d'affichage"
+disp_lang_tt: "Change la langue d'affichage de LabelMakr."
+wh_model: "Modèle Whisper"
+wh_model_tt: "Change le modèle Whisper utilisé pour la transcription."
+use_tensorcore: "Utiliser les Tensorcores"
+use_tensorcore_tt: "Utilise les tensorcores de votre carte graphique. Cela peut accélerer le processus de transcription. Optionnel."
+force_cpu: "Forcer l'utilisation du processeur"
+force_cpu_tt: "Force LabelMakr à utiliser le processeur lors de la transcription, ne peut utiliser que le modèle Whisper 'small'."
+dark_mode: "Mode Nuit"
+dark_mode_tt: "Activer le Mode Nuit."
+
+# transcription editor:
+transcription_editor: "Editeur de transcriptions"
+transcription_editor_tt: "Ouvre l'éditeur de transcriptions intégré."
+play: "Play"
+pause: "Pause"
+unpause: "Reprendre"
+stop: "Stop"
+save: "Enregistrer"
+next: "Enregistrer & Charger le prochain label."
+
+# labbu stuff:
+labbu_help: "＊ Survolez chaque case afin d'avoir plus d'informations. ＊"
+dxer: "Estimer [dx]"
+dxer_tt: "Estime quand [t] et [d] doivent être [dx] en fonction des phonèmes alentours et de leur longueur. Option spécifique à l'ANGLAIS."
+uhr_merge: "Fusionner [uh r]"
+uhr_merge_tt: "Fusionner [uh r] en un unique phonème [er]. Option spécifique à l'ANGLAIS."
+merge_dupes: "Fusionner les doublons"
+merge_dupes_tt: "Fusionne les phonèmes doublés en un seul."
+short_h: "Fusionner les [h] courts"
+short_h_tt: "Fusionne n'importe quel son [hh]/[h] qui est trop court et non prononcé."
+run_fix: "Réparer les Labels"
+run_fix_tt: "Lance les fonctions de réparation sur tous les Labels générés dans votre corpus."

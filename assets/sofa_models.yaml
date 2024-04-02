@@ -1,29 +1,36 @@
 models:
-  tgm_sofa:
-    name: 'tgm_sofa'
+  tgm_sofa_en:
+    name: 'tgm_sofa | EN'
     ver: 'v0.0.5'
     language: 'en_US, en_UK'
-    ckpt_path: 'SOFA/ckpt/tgm_sofa_v005.ckpt'
+    ckpt_path: 'SOFA/ckpt/tgm_sofa_v100.ckpt'
     dict_path: 'SOFA/dictionary/tgm_sofa_dict.txt'
     hint: 'English SOFA Model trained by tigermeat.'
-  colstone_jpn:
-    name: 'colstone_jpn'
+  colstone_jp:
+    name: 'colstone_jpn | JP'
     ver: 'v0.0.2'
     language: 'jp_JP'
     ckpt_path: 'SOFA/ckpt/colstone_sofa_v2.0.ckpt'
     dict_path: 'SOFA/dictionary/jpn_phlvl.txt'
     hint: 'Japanese Romaji SOFA Model trained by colstone.'
-  suco_mandarin:
-    name: 'suco_mandarin'
+  suco_zh:
+    name: 'suco_mandarin | ZH'
     ver: 'v1.0.0'
     language: 'zh_ZH'
     ckpt_path: 'SOFA/ckpt/v1.0.0_mandarin_singing.ckpt'
     dict_path: 'SOFA/dictionary/opencpop-extension.txt'
     hint: 'Mandarin Pretained SOFA Model trained by SOFA developer suco.'
-  millefeuille:
-    name: 'millefeuille'
+  millefeuille_fr:
+    name: 'millefeuille | FR'
     ver: 'v1.0.0'
     language: 'fr_FR'
     ckpt_path: 'SOFA/ckpt/millefeuille.ckpt'
     dict_path: 'SOFA/dictionary/millefeuille_dict.txt'
     hint: 'French SOFA Model trained by imsupposedto. Uses millefeuille phoneme set.'
+  colstone_ko:
+    name: 'colstone | KO'
+    ver: 'v0.0.1'
+    language: 'ko_KO'
+    ckpt_path: 'models/colstone_ko/model.ckpt'
+    dict_path: 'SOFA/dictionary/korean.txt'
+    hint: ''
