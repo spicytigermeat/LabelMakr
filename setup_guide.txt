@@ -1,0 +1,3 @@
+To install, decide if you want to install CPU or GPU. Then, run either "setup_CPU.bat" or "setup_GPU.bat".
+
+This will automatically configure the Python environment, and install the SOFA models. After that, run "run.bat" and you should be good to go! 

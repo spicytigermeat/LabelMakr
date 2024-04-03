@@ -49,21 +49,23 @@ v021
 - Fixed a few scripts to allow for early CPU inference.
 
 v030
-- Another huge overhaul, like v010
-- Lots and lots of GUI changes/additions
-- Made the CPU/GPU switching more intuitive
-	- Restricts CPU inference to "small" Whisper model so your PC won't explode
-- More consistency in the code
-	- better global implementation of pathlib
-	- removed some weird inconsistencies, like unused variables
-	- implemented logging module for better troubleshooting/understanding what's happening
-- Implemented my python module "ez-localizr" for simple management of localizing to other languages.
-- First implementation of Labbu label fixing
+- Huge update
+- Support for colstone's Korean SOFA model!
+	- Korean GUI translation by 군곰 (KUNGOM)
+- Lot's of small GUI tweaks/changes/addition
+	- Light/Dark mode toggle (Dark mode by default)
+	- cute little icons on the buttons, custom fonts for English/Japanese/Chinese/Korean
+- Allows you to choose to install CPU or GPU version
+- More code consistency
+	- Global implementation of Pathlib
+	- removed weird inconsistencies, like unused variables
+	- Implemented the logging module for slightly easier troubleshooting
+- Implemented a python module I wrote called "ez-localizr", to make localization easy :)
+- First (beta) implementation of Labbu label fixing.
 	- uses label tool I wrote called "labbu" to contextually post-process labels
 	- Currently it's most useful for English, but there's still some good fixes for non-English languages.
-- Few changes in how I handled the installation.
-	- Releasing 2 versions: CPU & GPU. Both come with preconfigured Python environments, so you only have to download 1 file instead of relying on Python to install properly on any given system.
-- Fixed up parts of the transcription editor
+- Fixed up the transcription editor
 	- Less unhelpful text in the file selection box
-	- Cute little icons on the buttons
-	- Better interfacing with pygame mixer for playing the audio
+	- Better interfacing with pygame mixer for playing audio
+- Much easier to implement custom SOFA models.
+	- Here's a guide! https://github.com/spicytigermeat/LabelMakr/blob/v030/DOCS/implement_custom_sofa_model.md
