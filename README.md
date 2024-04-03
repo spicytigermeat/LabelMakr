@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/spicytigermeat/LabelMakr/assets/103609620/3b482e7e-3f7c-42cf-a562-3ca0fdca2de0">
+  <img src="https://github.com/spicytigermeat/LabelMakr/blob/v030/.github/labelmakr_sc.png", alt="Screenshot of LabelMakr and the transcription editor.">
 </p>
 
 LabelMakr is a GUI tool to help users easily generate SVS phoneme-level labels. It is intended for use with DiffSinger, but is easily adaptable for other systems. Currently, LabelMakr has full support for English, Japanese, Chinese, French and Korean singing!
@@ -14,28 +14,14 @@ Please use the portable version for Windows found [here](https://github.com/spic
 
 - French Usage Guide can be found [here](https://utaufrance.com/comment-utiliser-labelmakr/)! (Written by [Mim](https://twitter.com/mimsynth))
 
-# Credits 📰
+## Custom SOFA Model Implementation
 
-- SOFA & v1.0.0_mandarin_song.ckpt SOFA model developed by [suco/qiuqiao](https://github.com/qiuqiao/SOFA).
-- [tgm_sofa](https://github.com/spicytigermeat/SOFA-Models/releases/tag/v0.0.4) is developed by me, tigermeat (used ver: v005)
-- Japanese SOFA model trained by [colstone](https://github.com/colstone/SOFA_Models/releases/tag/JPN-V0.0.2b). The installed version is trimmed to save space. (used ver: v0.0.2)
-- Japanese G2p Compiled Version by [CjangCjengh](https://github.com/CjangCjengh/japanese_g2p).
-- Millefeuille SOFA model & fr_g2p model trained by [imsupposedto](https://github.com/imsupposedto).
-- G2P models used are trained with [OpenUTAU's G2P system](https://github.com/stakira/OpenUtau/tree/master/py).
-- Beta testers: nobodyP, Asteriski, Guillotama, imsupposedto
+Please check out the guide on how to implement custom SOFA models [here!](https://github.com/spicytigermeat/LabelMakr/blob/v030/DOCS/implement_custom_sofa_model.md)
 
-## GUI Translations 🗣️
-- English/Japanese: tigermeat
-- Traditional Chinese: ArchiVoice
-- Indonesian: Koji
-- French: Hibya & Mim
+## Credits
 
-# Plans 📝
-
-- Implement automatic label cleanup (using labbu library)
-- Continued GUI refinement and improvements!
-- Clean up code and fix up localization method (i don't like i18n)
+Please check out credits [here!](https://github.com/spicytigermeat/LabelMakr/blob/v030/DOCS/credits.md)
 
 ## Manual Installation 🧰
 
-Read the guide on how to manually install LabelMakr [here](https://github.com/spicytigermeat/LabelMakr/blob/main/manual_install_guide.md)!
+Read the guide on how to manually install LabelMakr [here!](https://github.com/spicytigermeat/LabelMakr/blob/v030/DOCS/manual_install_guide.md)
