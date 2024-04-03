@@ -16,9 +16,9 @@ LabelMakr
 |  assets
 |  corpus
 |  models
-|  custom_sofa_en
-|  |  dict.txt
-|  |  model.ckpt
+|  |  custom_sofa_en
+|  |  |  dict.txt
+|  |  |  model.ckpt
 |  strings
 |  labelmakr.py
 ...
@@ -48,12 +48,12 @@ LabelMakr
 |  assets
 |  corpus
 |  models
-|  custom_sofa_en
-|  |  g2p
-|  |  |  cfg.yaml
-|  |  |  model.ptsd
-|  |  dict.txt
-|  |  model.ckpt
+|  |  custom_sofa_en
+|  |  |  g2p
+|  |  |  |  cfg.yaml
+|  |  |  |  model.ptsd
+|  |  |  dict.txt
+|  |  |  model.ckpt
 |  strings
 |  labelmakr.py
 ...
