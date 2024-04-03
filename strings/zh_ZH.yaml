@@ -1,0 +1,32 @@
+# translation by ArchiVoice
+lang_code: '中文 (繁體)'
+app_ttl: 'LabelMakr'
+tab_ttl_1: '標註'
+tab_ttl_2: '轉錄'
+tab_ttl_3: '修改標注'
+tab_ttl_4: '設定'
+copyright: '© tigermeat 2023-2024 | v020'
+
+#transcription window strings:
+corpus_folder: '資料庫位置:'
+open: '開啟'
+lang_choice: '轉錄語言'
+run_trns: '執行轉錄'
+
+# aligner window strings:
+model_lbl: '選擇 SOFA 模型:'
+op_lbl: '選擇輸出格式:'
+run_align: '執行 SOFA'
+
+# settings:
+disp_lang: '顯示語言'
+wh_model: 'Whisper模型'
+
+transcription_editor: '轉錄編輯器'
+play: '播放'
+pause: '暫停'
+unpause: '繼續'
+stop: '停止'
+save: '儲存'
+next: '下一個'
+use_tensorcore: '使用 Tensorcores'

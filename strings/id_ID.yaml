@@ -1,0 +1,32 @@
+# translation by Koji
+lang_code: 'Bahasa indonesia'
+app_ttl: 'LabelMakr'
+tab_ttl_1: 'Transkripsi'
+tab_ttl_2: 'Penyelarasan'
+tab_ttl_3: 'Perbaiki Label'
+tab_ttl_4: 'Setelan'
+copyright: '© tigermeat 2023-2024 | v020'
+
+#transcription window strings:
+corpus_folder: 'Folder Korpus:'
+open: 'Buka'
+lang_choice: 'Bahasa Transkripsi'
+run_trns: 'Jalankan Transkripsi'
+
+# aligner window strings:
+model_lbl: 'Pilih Model SOFA:'
+op_lbl: 'Pilih Format Keluaran:'
+run_align: 'Jalankan SOFA'
+
+# settings:
+disp_lang: 'Bahasa Tampilan'
+wh_model: 'Model Whisper'
+
+transcription_editor: 'Editor Transkripsi'
+play: 'Putar'
+pause: 'Jeda'
+unpause: 'Batalkan Jeda'
+stop: 'Berhenti'
+save: 'Simpan'
+next: 'Lanjut'
+use_tensorcore: 'Gunakan Tensorcore'
