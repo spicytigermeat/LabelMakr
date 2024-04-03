@@ -6,6 +6,8 @@
   <img src="https://github.com/spicytigermeat/LabelMakr/assets/103609620/3b482e7e-3f7c-42cf-a562-3ca0fdca2de0">
 </p>
 
+LabelMakr is a GUI tool to help users easily generate SVS phoneme-level labels. It is intended for use with DiffSinger, but is easily adaptable for other systems. Currently, LabelMakr has full support for English, Japanese, Chinese, French and Korean singing!
+
 Please use the portable version for Windows found [here](https://github.com/spicytigermeat/LabelMakr/releases/tag/v020)!!
 
 ## Community Contributions 🧑‍🤝‍🧑
