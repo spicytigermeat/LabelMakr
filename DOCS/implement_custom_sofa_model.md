@@ -20,7 +20,7 @@ LabelMakr
 |  |  dict.txt
 |  |  model.ckpt
 |  strings
-labelmakr.py
+|  labelmakr.py
 ...
 ```  
 
@@ -55,6 +55,6 @@ LabelMakr
 |  |  dict.txt
 |  |  model.ckpt
 |  strings
-labelmakr.py
+|  labelmakr.py
 ...
 ```  
