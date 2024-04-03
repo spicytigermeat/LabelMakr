@@ -89,7 +89,7 @@ class LabelMakr(ctk.CTk):
 		for model in glob(str(MODELS / '*')):
 			model = model[7:]
 			# ignore the g2p model file
-			if model == 'g2p_model.py':
+			if model in ['g2p_model.py', '__pycache__']:
 				continue
 			g2p_bool = False
 			g2p_model = None
@@ -637,8 +637,6 @@ class LabelMakr(ctk.CTk):
 class transcriptEditor(ctk.CTkToplevel):
 	def __init__(self, L, clang, font):
 		super().__init__()
-		logger = log()
-
 		# carry over needed things from the main class
 		self.L = L
 		self.clang = clang
@@ -708,7 +706,7 @@ class transcriptEditor(ctk.CTkToplevel):
 
 		# file frame
 
-		self.file_list = [file[7:] for file in glob(str(P('./corpus/**/*.txt')))]
+		self.file_list = [file[7:] for file in glob(str(P(CORPUS / '**/*.txt')))]
 
 		# listbox
 		self.file_sel = CTkListbox(self, width=155,
@@ -783,11 +781,11 @@ class transcriptEditor(ctk.CTkToplevel):
 		self.text_box.delete("0.0", tk.END)
 
 		# load audio
-		sound_name = P("corpus") / P(self.file_sel.get()).resolve()
+		sound_name = CORPUS / P(self.file_sel.get()).resolve()
 
 		self.player.load(P(sound_name).with_suffix('.wav'))
 
-		open_path = P("corpus") / P(self.file_sel.get(self.file_sel.curselection()))
+		open_path = CORPUS / P(self.file_sel.get(self.file_sel.curselection()))
 
 		with open(open_path, 'r', encoding='utf-8') as lbl:
 			self.text_box.insert("0.0", lbl.read())
@@ -795,7 +793,7 @@ class transcriptEditor(ctk.CTkToplevel):
 
 	def save_label(self):
 
-		save_path = P("corpus" / self.file_sel.get(self.file_sel.curselection()))
+		save_path = P(CORPUS / self.file_sel.get(self.file_sel.curselection()))
 		
 		try:
 			with open(save_path, 'w+', encoding='utf-8') as lbl:
