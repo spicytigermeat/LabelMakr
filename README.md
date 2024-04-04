@@ -13,6 +13,7 @@ Please use the portable version for Windows found [here](https://github.com/spic
 ## Community Contributions 🧑‍🤝‍🧑
 
 - French Usage Guide can be found [here](https://utaufrance.com/comment-utiliser-labelmakr/)! (Written by [Mim](https://twitter.com/mimsynth))
+- Korean Usage Guide can be found [here](https://docs.google.com/document/d/1-EcFrkt4VDjRlFQ8Sytvov4_3GjDt4-xHYNjQDuDScU/edit)! (Written by [군곰 KUNGOM](https://twitter.com/utaukg))
 
 ## Custom SOFA Model Implementation
 
