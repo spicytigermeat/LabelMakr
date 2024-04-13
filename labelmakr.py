@@ -370,7 +370,6 @@ class LabelMakr(ctk.CTk):
 									   onvalue=True,
 									   offvalue=False,
 									   text=self.L('dxer'),
-									   command=lambda: dummy(),
 									   font=self.font)
 		self.dxer_cb.grid(row=1, column=0, padx=5, pady=5, sticky=tk.N)
 		self.dxer_cb_tt = CTkToolTip(self.dxer_cb, delay=self.tt_delay, message=self.L('dxer_tt'), font=self.font)
@@ -382,7 +381,6 @@ class LabelMakr(ctk.CTk):
 											onvalue=True,
 											offvalue=False,
 											text=self.L('uhr_merge'),
-											command=lambda: dummy(),
 											font=self.font)
 		self.uhr_merge_cb.grid(row=1, column=1, padx=5, pady=5, sticky=tk.N)
 		self.uhr_merge_tt = CTkToolTip(self.uhr_merge_cb, delay=self.tt_delay, message=self.L('uhr_merge_tt'), font=self.font)
@@ -588,7 +586,7 @@ class LabelMakr(ctk.CTk):
 	def run_label_fix(self):
 		# uses labbu to fix the files
 
-		corpus_list = [name for name in os.listdir(str(P('./corpus'))) if os.path.isdir(str(P('./corpus' / name)))]
+		corpus_list = [name for name in os.listdir(str(P(CORPUS))) if os.path.isdir(str(P(CORPUS / name)))]
 
 		for singer in corpus_list:
 			for file in glob(str(P(f'./corpus/{singer}/labels/*.lab')), recursive=True):
