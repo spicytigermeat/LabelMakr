@@ -1,64 +1,65 @@
 lang_code: "日本語 (JP)"
-app_ttl: "ラベルメーカー"
-tab_ttl_1: "転写"
-tab_ttl_2: "整置"
-tab_ttl_3: "ラベルを一定"
+app_ttl: "LabelMakr"
+tab_ttl_1: "ラベル生成"
+tab_ttl_2: "ラベル修正"
+tab_ttl_3: "一括処理"
 tab_ttl_4: "設定"
 
 # transcription window strings:
-corpus_folder: "コルパスフォルダを開く"
-corpus_folder_tt: "転写向けの「.wav」ファイルのフォルダを開く。"
-lang_choice: "転写の言語"
-lang_choice_tt: "転写向けの言語です。 前処理のタイプを定める。"
-run_trns: "転写を実行"
-run_trns_tt: "Whisperではコルパスフォルダの中のすべての「.wav」ファイルを転写する。"
+corpus_folder: "コーパスフォルダを開く"
+corpus_folder_tt: "wav ファイルを入れるフォルダを開きます"
+lang_choice: "歌詞の言語"
+lang_choice_tt: "生成に使用する言語。ここで選んだ言語が SOFA の処理に使われます"
+run_trns: "ラベル生成を実行"
+run_trns_tt: "Whisperを使用してコーパスフォルダ内のすべての wav ファイルからラベルを生成します"
 
 # aligner window strings:
-model_lbl: "SOFAモデルを選ぶ"
-model_lbl_tt: "Select the SOFA model you will use to align the phonemes to your transcriptions."
-op_lbl: "転写のフォマット"
+model_lbl: "SOFAモデルを選択"
+model_lbl_tt: "音素の位置修正に使用する SOFA モデルを選択します"
+op_lbl: "出力フォーマット"
 
 # note for translators:
 # | in YAML allows for multi-line strings that retain linebreaks.
 # it doesn't use "" but it's still a string, so don't put many special characters in there.
 op_lbl_tt: |
-  TextGrid: Praatのフォマットです。 Contains word and phoneme level transcription.
+  TextGrid: Praatのフォーマット。
+  歌詞と音素を譜面起こしします。
 
-  htk (デフォルト): Standard SVS phoneme-level labels. 
-  Does not save word level transcriptions, phoneme level only.
+  htk (デフォルト): SVS における標準的な音素ラベル。
+  歌詞ではなく音素ごとの譜面起こしになります。
 
-run_align: "Align Labels"
-run_align_tt: "Aligns labels based on transcripts using the selected SOFA model."
+run_align: "ラベル修正を実行"
+run_align_tt: "選択した SOFA モデルを使用して生成されたラベルを修正します"
 
 # settings:
-disp_lang: "Display Language"
-disp_lang_tt: "Change LabelMakr's display language."
-wh_model: "Whisper Model"
-wh_model_tt: "Change the Whisper model used in inference."
-use_tensorcore: "Use Tensorcores"
-use_tensorcore_tt: "Use your GPU's tensorcores. This may speed up inference a bit. Not required."
-force_cpu: "Force CPU Render"
-force_cpu_tt: "Forces LabelMakr to render on CPU. Limits you to 'small' Whisper model."
+disp_lang: "表示言語"
+disp_lang_tt: "LabelMakr の表示言語を選択します"
+wh_model: "Whisperモデルを選択"
+wh_model_tt: "推論に使用する Whisper モデルを選択します"
+use_tensorcore: "Tensorcoreを使用"
+use_tensorcore_tt: "GPU の tensorcore を使用します。推論のスピードが上がる可能性があります。"
+force_cpu: "CPU での処理を強制する"
+force_cpu_tt: "LabelMakr が CPU で処理を行うよう強制します。Whisperモデルの 'small' 限定。"
 
 # transcription editor:
-transcription_editor: "Transcription Editor"
-transcription_editor_tt: "Open the built in transcription editor."
-play: "Play"
-pause: "Pause"
+transcription_editor: "採譜エディタを開く"
+transcription_editor_tt: "同梱の採譜エディタを開きます"
+play: "再生"
+pause: "一時停止"
 unpause: "Unpause"
-stop: "Stop"
-save: "Save"
-next: "Save & Load next label."
+stop: "停止"
+save: "保存"
+next: 保存して次のラベルへ"
 
 # labbu stuff:
-labbu_help: "＊ Hover over each box to learn what they do. ＊"
-dxer: "Estimate [dx]"
-dxer_tt: "Guesses what [t] and [d] should become [dx] based on surrounding phonemes and length. English ONLY."
-uhr_merge: "Merge [uh r]"
-uhr_merge_tt: "Merges [uh r] into a single [er] phoneme. English ONLY."
-merge_dupes: "Merge Duplicates"
-merge_dupes_tt: "Merge any duplicated phonemes into a single field."
-short_h: "Merge short [h]"
-short_h_tt: "Merge any very short, unpronounced [hh]/[h]."
-run_fix: "Fix Labels"
-run_fix_tt: "Run the fix functions on all generated labels in your corpus."
+labbu_help: "＊チェックボックスをマウスオーバーすると詳細が表示されます＊"
+dxer: "[dx]に自動変換"
+dxer_tt: "前後の音素と長さをもとに、[t]と[d]を[dx]にすべき部分を推測して自動変換します。英語のみ"
+uhr_merge: "[uh r]をマージ"
+uhr_merge_tt: "[uh r]を[er]に置換します。英語のみ"
+merge_dupes: "重複した音素をマージ"
+merge_dupes_tt: "1つのフィールド内で重複した音素を消去します"
+short_h: "短い[h]をマージ"
+short_h_tt: "ほぼ発音されていない、短い[hh]/[h]を消去します"
+run_fix: "処理を実行"
+run_fix_tt: "コーパス内のすべてのラベルに対して修正処理を実行します"
