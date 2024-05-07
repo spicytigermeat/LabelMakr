@@ -167,7 +167,7 @@ fr_FR:
   stop: 'Stop'
   save: 'Enregistrer'
   next: 'Suivant'
-zh_CN:
+zh_SG:
   lang_code: "中文（简体）"
   app_ttl: "LabelMakr"
   tab_ttl_1: "标注"
