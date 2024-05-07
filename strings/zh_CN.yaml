@@ -22,11 +22,11 @@ op_lbl: "选择输出格式"
 # | in YAML allows for multi-line strings that retain linebreaks.
 # it doesn't use "" but it's still a string, so don't put many special characters in there.
 op_lbl_tt: |
-  TextGrid: A format for use with Praat.
-  Contains word and phoneme level transcription.
+  TextGrid：用于 Praat 的格式。
+  包含单词和音素级别的转录。
 
-  htk (default): Standard SVS phoneme-level labels. 
-  Does not save word level transcriptions, phoneme level only.
+  htk（默认）：标准 SVS 音素级别标签。
+  不保存单词级别的转录，仅保存音素级别的转录。
 
 run_align: "对齐标签"
 run_align_tt: "使用所选 SOFA 模型根据转录本对齐标签。"
