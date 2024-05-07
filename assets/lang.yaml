@@ -167,3 +167,71 @@ fr_FR:
   stop: 'Stop'
   save: 'Enregistrer'
   next: 'Suivant'
+zh_CN:
+  lang_code: "中文（简体）"
+  app_ttl: "LabelMakr"
+  tab_ttl_1: "标注"
+  tab_ttl_2: "转录"
+  tab_ttl_3: "修复标注"
+  tab_ttl_4: "设定"
+
+  # transcription window strings:
+  corpus_folder: "打开资料库文件夹"
+  corpus_folder_tt: "打开要放置需要进行转录的WAV的文件夹。"
+  lang_choice: "转录语言"
+  lang_choice_tt: "这是您的文件将被转录成的语言。这也告诉 SOFA 在对齐之前对转录进行什么类型的预处理。"
+  run_trns: "转录"
+  run_trns_tt: "通过 Whisper 转录资料库文件夹中的文件。"
+
+  # aligner window strings:
+  model_lbl: "选择SOFA模型"
+  model_lbl_tt: "选择您将用于将音素与转录对齐的 SOFA 模型。"
+  op_lbl: "选择输出格式"
+
+  # note for translators:
+  # | in YAML allows for multi-line strings that retain linebreaks.
+  # it doesn't use "" but it's still a string, so don't put many special characters in there.
+  op_lbl_tt: |
+    TextGrid: A format for use with Praat.
+    Contains word and phoneme level transcription.
+
+    htk (default): Standard SVS phoneme-level labels. 
+    Does not save word level transcriptions, phoneme level only.
+
+  run_align: "对齐标签"
+  run_align_tt: "使用所选 SOFA 模型根据转录本对齐标签。"
+
+  # settings:
+  disp_lang: "显示语言"
+  disp_lang_tt: "更改LabelMakr的显示语言。"
+  wh_model: "Whisper模型"
+  wh_model_tt: "更改推理中使用的 Whisper 模型。"
+  use_tensorcore: "使用 Tensorcores"
+  use_tensorcore_tt: "使用 GPU 的 Tensorcores。这可能会加快推理速度。不是必需的。"
+  force_cpu: "强制 CPU 渲染"
+  force_cpu_tt: "强制 LabelMakr 在 CPU 上渲染。限制您使用'small' Whisper 模型。"
+  dark_mode: "深色模式"
+  dark_mode_tt: "切换深色模式。"
+
+  # transcription editor:
+  transcription_editor: "转录编辑器"
+  transcription_editor_tt: "打开内置转录编辑器。"
+  play: "播放"
+  pause: "暂停"
+  unpause: "继续"
+  stop: "停止"
+  save: "储存"
+  next: "储存 & 加载下一个标注"
+
+  # labbu stuff:
+  labbu_help: "＊ 将鼠标悬停在每个框上以了解它们的作用。 ＊"
+  dxer: "估计 [dx]"
+  dxer_tt: "根据周围的音素和长度猜测 [t] 和 [d] 应该变成 [dx] 。仅限英语。"
+  uhr_merge: "合并 [uh r]"
+  uhr_merge_tt: "将 [uh r] 合并为单个 [er] 音素。仅限英语。"
+  merge_dupes: "合并重复项"
+  merge_dupes_tt: "将所有重复的音素合并到一个字段中。"
+  short_h: "合并短 [h]"
+  short_h_tt: "合并任何非常短的、不发音的 [hh]/[h]."
+  run_fix: "修复标签"
+  run_fix_tt: "对资料库中所有生成的标签进行修复操作。"
