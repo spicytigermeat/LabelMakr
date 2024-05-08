@@ -1,7 +1,7 @@
 lang_code: "日本語 (JP)"
 app_ttl: "LabelMakr"
-tab_ttl_1: "ラベル生成"
-tab_ttl_2: "ラベル修正"
+tab_ttl_1: "歌詞起こし"
+tab_ttl_2: "ラベル生成"
 tab_ttl_3: "一括処理"
 tab_ttl_4: "設定"
 
@@ -9,13 +9,13 @@ tab_ttl_4: "設定"
 corpus_folder: "コーパスフォルダを開く"
 corpus_folder_tt: "wav ファイルを入れるフォルダを開きます"
 lang_choice: "歌詞の言語"
-lang_choice_tt: "生成に使用する言語。ここで選んだ言語が SOFA の処理に使われます"
-run_trns: "ラベル生成を実行"
-run_trns_tt: "Whisperを使用してコーパスフォルダ内のすべての wav ファイルからラベルを生成します"
+lang_choice_tt: "歌詞起こしに使用する言語。ここで選んだ言語が SOFA の処理にも使われます"
+run_trns: "歌詞起こしを実行"
+run_trns_tt: "Whisperを使用してコーパスフォルダ内のすべての wav ファイルから歌詞（音素の羅列）を生成します"
 
 # aligner window strings:
 model_lbl: "SOFAモデルを選択"
-model_lbl_tt: "音素の位置修正に使用する SOFA モデルを選択します"
+model_lbl_tt: "ラベル生成に使用する SOFA モデルを選択します"
 op_lbl: "出力フォーマット"
 
 # note for translators:
@@ -28,8 +28,8 @@ op_lbl_tt: |
   htk (デフォルト): SVS における標準的な音素ラベル。
   歌詞ではなく音素ごとの譜面起こしになります。
 
-run_align: "ラベル修正を実行"
-run_align_tt: "選択した SOFA モデルを使用して生成されたラベルを修正します"
+run_align: "ラベル生成を実行"
+run_align_tt: "選択した SOFA モデルと歌詞起こしのテキストファイルを使用してラベルファイルを生成します"
 
 # settings:
 disp_lang: "表示言語"
@@ -42,8 +42,8 @@ force_cpu: "CPU での処理を強制する"
 force_cpu_tt: "LabelMakr が CPU で処理を行うよう強制します。Whisperモデルの 'small' 限定。"
 
 # transcription editor:
-transcription_editor: "採譜エディタを開く"
-transcription_editor_tt: "同梱の採譜エディタを開きます"
+transcription_editor: "歌詞起こしエディタを開く"
+transcription_editor_tt: "同梱の歌詞起こしエディタを開きます"
 play: "再生"
 pause: "一時停止"
 unpause: "Unpause"
