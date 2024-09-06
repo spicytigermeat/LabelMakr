@@ -1,0 +1,68 @@
+# translation by m
+lang_code: "Русский (RU)"
+app_ttl: "LabelMakr"
+tab_ttl_1: "Распознавание"
+tab_ttl_2: "Лейблинг"
+tab_ttl_3: "Исправление"
+tab_ttl_4: "Настройки"
+
+# transcription window strings:
+corpus_folder: "Открыть папку с данными"
+corpus_folder_tt: "Открывает папку куда можно положить .wav файлы для распознавания."
+lang_choice: "Язык распознавания"
+lang_choice_tt: "На этом языке приложение будет пытаться распознать текст в .wav файлах. Также это помогает SOFA понять какой тип предобработки использовать перед лейблингом."
+run_trns: "Распознать текст"
+run_trns_tt: "Запускает распознавание текста для файлов в папке 'corpus' при помощи Whisper."
+
+# aligner window strings:
+model_lbl: "Выбрать модель SOFA"
+model_lbl_tt: "Позволяет выбрать модель SOFA для лейблинга."
+op_lbl: "Формат выходных данных"
+
+# note for translators:
+# | in YAML allows for multi-line strings that retain linebreaks.
+# it doesn't use "" but it's still a string, so don't put many special characters in there.
+op_lbl_tt: |
+  TextGrid: Формат для использования в Praat.
+  Содержит данные на уровне слов и фонем.
+
+  htk (по умолчанию): Стандартные SVS метки. 
+  Не содержит данные на уровне слов, только на уровне фонем.
+
+run_align: "Лейблинг"
+run_align_tt: "Позволяет пролейблить .wav файлы при помощи распознанного текста."
+
+# settings:
+disp_lang: "Язык приложения"
+disp_lang_tt: "Меняет язык приложения LabelMakr."
+wh_model: "Модель Whisper"
+wh_model_tt: "Меняет используемую модель Whisper для распознавания текста."
+use_tensorcore: "Использовать Tensorcores"
+use_tensorcore_tt: "Позволяет использовать тензорные ядра графической карты. Может ускорить обработку. Не обязательно."
+force_cpu: "Принудительный ЦП-рендер"
+force_cpu_tt: "Заставляет LabelMakr использовать рендер через ЦП. При этом доступно использование только 'small' модели Whisper."
+dark_mode: "Тёмный режим"
+dark_mode_tt: "Переключить Тёмный режим."
+
+# transcription editor:
+transcription_editor: "Редактор распознанного текста"
+transcription_editor_tt: "Открывает встроенный редактор распознанного текста."
+play: "Воспроизвести"
+pause: "Пауза"
+unpause: "Возобновить"
+stop: "Остановить"
+save: "Сохранить"
+next: "Сохранить & Загрузить следующий файл."
+
+# labbu stuff:
+labbu_help: "＊ Наведите на настройки для дополнительной информации. ＊"
+dxer: "Оценка [dx]"
+dxer_tt: "Рассчитывает когда [t] и [d] должны быть [dx] на основе соседних фонем и длины. ТОЛЬКО для английского."
+uhr_merge: "Объединение [uh r]"
+uhr_merge_tt: "Объединяет [uh r] в одну фонему [er]. ТОЛЬКО для английского."
+merge_dupes: "Объединение дубликатов"
+merge_dupes_tt: "Объединяет дублирующиеся фонемы в одну."
+short_h: "Объединение короткой [h]"
+short_h_tt: "Объединяет очень короткую, не произносимую [hh]/[h]."
+run_fix: "Исправить"
+run_fix_tt: "Исправляет файлы лейблинга в соответствии с настройками."

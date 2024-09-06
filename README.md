@@ -14,6 +14,7 @@ Please use the portable version for Windows found [here](https://github.com/spic
 
 - Le guide d'utilisation en Français [peut-être trouvé ici](https://utaufrance.com/comment-utiliser-labelmakr/)! (Written by [Mim](https://twitter.com/mimsynth))
 - 한국어 사용 가이드는 [여기](https://docs.google.com/document/d/1-EcFrkt4VDjRlFQ8Sytvov4_3GjDt4-xHYNjQDuDScU/edit)서 찾을 수 있습니다! (Written by [군곰 KUNGOM](https://twitter.com/utaukg))
+- Инструкция по установке и использованию [здесь](https://telegra.ph/Instrukciya-po-ustanovke-i-ispolzovaniyu-LabelMakr-09-06)! (Written by [m](https://t.me/m_repository))
 
 ## Custom SOFA Model Implementation
 

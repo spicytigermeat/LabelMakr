@@ -20,12 +20,13 @@ GUI Translations:
 Japanese: tigermeat
 Chinese: ArchiVoice
 Indonesian: Koji
+Russian: m
 
 ##########################
 #	 CURRENT FEATURES	 #
 ##########################
 
-Transcribe & Force-Align English, Japanese and Mandarin Chinese.
+Transcribe & Force-Align English, Japanese, Mandarin Chinese and Russian.
 
 Transcribe any languages supported by Whisper
 (manually type in the 2 digit language code in the language drop down.)

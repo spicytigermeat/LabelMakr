@@ -117,7 +117,7 @@ class LabelMakr(ctk.CTk):
 		self.labu = labbu_func(lang='default')
 
 		self.wh_models = ['tiny', 'base', 'small', 'medium', 'large']
-		self.transcribe_lang_op = ['EN', 'JP', 'ZH', 'FR', 'KO']
+		self.transcribe_lang_op = ['EN', 'JP', 'ZH', 'FR', 'KO', 'RU']
 		self.transcribe_lang_op.sort()
 
 		# font stuff
@@ -125,11 +125,13 @@ class LabelMakr(ctk.CTk):
 		pyglet.font.add_file(str(P(ASSETS / 'PixelMplus10-Regular.ttf')))
 		pyglet.font.add_file(str(P(ASSETS / 'neodgm.ttf')))
 		pyglet.font.add_file(str(P(ASSETS / 'WenQuanYi.Bitmap.Song.16px.ttf')))
+		pyglet.font.add_file(str(P(ASSETS / '8bitoperatorf8.ttf')))
 
 		self.en_font = 'Pixel Operator'
 		self.jp_font = 'PixelMPlus10'
 		self.ko_font = 'NeoDunggeunmo'
 		self.zh_font = 'WenQuanYi Bitmap Song 16px'
+		self.ru_font = '8bitOperatorF8'
 
 		if self.clang.get() in ['jp_JP']:
 			self.font = ctk.CTkFont(family=self.jp_font, size=16)
@@ -140,6 +142,9 @@ class LabelMakr(ctk.CTk):
 		elif self.clang.get() in ['zh_ZH']:
 			self.font = ctk.CTkFont(family=self.zh_font, size=18)
 			self.font_sm = ctk.CTkFont(family=self.zh_font, size=16)
+		elif self.clang.get() in ['ru_RU']:
+			self.font = ctk.CTkFont(family=self.ru_font, size=16)
+			self.font_sm = ctk.CTkFont(family=self.ru_font, size=14)
 		else:
 			self.font = ctk.CTkFont(family=self.en_font, size=16)
 			self.font_sm = ctk.CTkFont(family=self.en_font, size=14)

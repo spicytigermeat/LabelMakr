@@ -34,3 +34,10 @@ models:
     ckpt_path: 'models/colstone_ko/model.ckpt'
     dict_path: 'SOFA/dictionary/korean.txt'
     hint: ''
+  hhskt_ru:
+    name: 'hhs_kt | RU'
+    ver: 'v0.0.1'
+    language: 'ru_RU'
+    ckpt_path: 'models/hhskt_ru/model.ckpt'
+    dict_path: 'SOFA/dictionary/russian.txt'
+    hint: 'Russian SOFA Model trained by m & hhs_kt.'
