@@ -126,3 +126,4 @@ wcwidth==0.2.12
 Werkzeug==3.0.1
 yarl==1.9.4
 zipp==3.17.0
+pinyin_jyutping

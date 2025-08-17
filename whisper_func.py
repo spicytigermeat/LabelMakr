@@ -11,6 +11,7 @@ import logging
 from g2pk import G2p as G2pK
 import whisper
 from whisper.tokenizer import get_tokenizer
+import pinyin_jyutping
 
 def log(debug=False):
 	logger = logging.getLogger(__name__)
@@ -78,6 +79,13 @@ class Transcriber(object):
 					trns_str = ""
 					for word in hanzi_list:
 						trns_str += f"{word} "
+				elif lang.upper() == "YUE":
+					p = pinyin_jyutping.PinyinJyutping()
+					jyut_list = p.jyutping(fxy(answer['text']), tone_numbers=True, spaces=True)	
+					jyut_cleaned = [re.sub(r"\d", "", word) for word in jyut_list]
+					trns_str = ""
+					for word in jyut_cleaned:
+						trns_str += f"{word}"					
 				elif lang.upper() == "FR":
 					# adds a space after any contractions for the sake of the dictionary
 					trns_str = re.sub(r"[-]", " ", fxy(answer['text']).lower())

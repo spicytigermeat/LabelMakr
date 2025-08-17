@@ -117,7 +117,7 @@ class LabelMakr(ctk.CTk):
 		self.labu = labbu_func(lang='default')
 
 		self.wh_models = ['tiny', 'base', 'small', 'medium', 'large']
-		self.transcribe_lang_op = ['EN', 'JP', 'ZH', 'FR', 'KO']
+		self.transcribe_lang_op = ['EN', 'JP', 'ZH', 'YUE', 'FR', 'KO']
 		self.transcribe_lang_op.sort()
 
 		# font stuff
